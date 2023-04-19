@@ -56,6 +56,9 @@ collections:
           - name: headline
             label: Headline
             widget: string
+          - name: text
+            label: Text
+            widget: text
           - label: "Logo image"
             name: logo_url
             widget: "image"
