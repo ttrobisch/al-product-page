@@ -1,5 +1,15 @@
-module.exports = ({
+module.exports = {
   pageExtensions: ["tsx"],
+  images: {
+    remotePatterns: [
+      {
+        protocol: "https",
+        hostname: "example.com",
+        port: "",
+        pathname: "/account123/**",
+      },
+    ],
+  },
   webpack: (config, { buildId, dev, isServer, defaultLoaders, webpack }) => {
     config.module.rules.push(
       ...[
@@ -16,4 +26,4 @@ module.exports = ({
     );
     return config;
   },
-});
+};
