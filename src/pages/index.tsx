@@ -1,6 +1,7 @@
 import React from "react";
 import BulletPointIcon from "@heroicons/react/24/outline/ClipboardDocumentCheckIcon";
 import PlayIcon from "@heroicons/react/24/solid/PlayIcon";
+import DownIcon from "@heroicons/react/24/solid/ArrowDownCircleIcon";
 import frontpage_data from "../../meta/frontpage.yml";
 
 type Props = {
@@ -54,7 +55,7 @@ export default function Index() {
   return (
     <div className="col-start-1 row-start-1 p-8 h-screen overflow-auto">
       <div
-        className="-m-8 mb-4 p-8 bg-cover"
+        className="-m-8 mb-24 p-8 bg-cover min-h-screen md:min-h-0 relative"
         style={{
           backgroundImage: `url(${data.background_image_url})`,
           backgroundPositionY: "center",
@@ -65,12 +66,12 @@ export default function Index() {
             src={data.logo_url}
             alt={data.logo_alt}
             width={100}
-            className="pb-4"
+            className="pb-4 mb-24"
           />
-          <ul className="mb-4 grid gap-1">
+          <ul className="mb-12 grid gap-1">
             {data.bulletpoints.map((bulletpoint) => (
               <li key={bulletpoint.text}>
-                <BulletPointIcon className="inline h-8 mr-2" />
+                <BulletPointIcon className="inline h-5 mr-2" />
                 {bulletpoint.text}
               </li>
             ))}
@@ -93,9 +94,18 @@ export default function Index() {
             {data.contact_label}
           </a>
         </div>
+        <button
+          onClick={() => {
+            document.getElementById("amrs")?.scrollIntoView({ behavior: "smooth" });
+          }}
+          className="absolute bottom-0 mx-auto text-center inset-x-0 md:hidden text-white text-opacity-10"
+        >
+          <div className="mb-2">mehr anzeigen</div>
+          <DownIcon className="inline animate-bounce w-12" />
+        </button>
       </div>
 
-      <div className="mb-4">
+      <div className="mb-24" id="amrs">
         <h2 className="text-3xl py-3">{data.amr_headline}</h2>
         <p className="empty:hidden pb-3">{data.amr_subtext}</p>
 
@@ -118,20 +128,26 @@ export default function Index() {
         </div>
       </div>
 
-      <h2 className="text-3xl pb-3">{data.video_title}</h2>
-      <p className="empty:hidden pb-4">{data.video_subtext}</p>
-      <div className="grid gap-4 grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 w-full">
-        {data.videos.map((video) => (
-          <a key={video.name} href={video.url} id={video.url}>
-            <div className="relative hover:text-blue-500">
-              <button className="absolute inset-0">
-                <PlayIcon className="h-12 m-auto shadow-lg stroke-blue-500 stroke-[0.5]" />
-              </button>
-              <img src={video.thumbnail} alt={video.name} className="mb-2 w-full" />
-            </div>
-            <span>{video.name}</span>
-          </a>
-        ))}
+      <div className="mb-24">
+        <h2 className="text-3xl pb-3">{data.video_title}</h2>
+        <p className="empty:hidden pb-4">{data.video_subtext}</p>
+        <div className="grid gap-4 grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 w-full">
+          {data.videos.map((video) => (
+            <a key={video.name} href={video.url} id={video.url}>
+              <div className="relative hover:text-blue-500">
+                <button className="absolute inset-0">
+                  <PlayIcon className="h-12 m-auto shadow-lg stroke-blue-500 stroke-[0.5]" />
+                </button>
+                <img
+                  src={video.thumbnail}
+                  alt={video.name}
+                  className="mb-2 w-full"
+                />
+              </div>
+              <span>{video.name}</span>
+            </a>
+          ))}
+        </div>
       </div>
 
       <footer className="py-4">
