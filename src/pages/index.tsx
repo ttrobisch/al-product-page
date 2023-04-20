@@ -17,6 +17,10 @@ type Props = {
   contact_label: string;
   contact_description: string;
 
+  mail_address: string;
+  mail_subject: string;
+  mail_body: string;
+
   video_url: string;
   video_title: string;
   video_subtext: string;
@@ -87,7 +91,11 @@ export default function Index() {
             {data.contact_label}
           </a>
 
-          <a href="mailto:al@t-systems.com?subject=Kaufen&body=asdasdas%0D%0Ada%0D%0Asd%0D%0Aas%0D%0Adas%0D%0Ad%20asd%20asdasd">
+          <a
+            href={`mailto:${data.mail_address}?subject=${encodeURIComponent(
+              data.mail_subject
+            )}&body=${encodeURIComponent(data.mail_body)}`}
+          >
             Mail
           </a>
         </div>

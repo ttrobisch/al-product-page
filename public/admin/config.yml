@@ -94,6 +94,15 @@ collections:
           - name: video_subtext
             label: Video Subtext
             widget: text
+          - name: mail_address
+            label: Mail Addresse
+            widget: string
+          - name: mail_subject
+            label: Mail Betreff
+            widget: string
+          - name: mail_body
+            label: Mail Inhalt
+            widget: text
           - name: amr_headline
             label: AMR Section Headline
             widget: string
