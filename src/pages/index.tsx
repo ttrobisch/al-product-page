@@ -1,4 +1,4 @@
-import data from "../../meta/frontpage.yml";
+import frontpage_data from "../../meta/frontpage.yml";
 
 type Props = {
   headline: string;
@@ -16,6 +16,9 @@ type Props = {
   video_title: string;
   video_subtext: string;
 
+  legal_notice_url: string;
+  legal_notice_label: string;
+
   amr_headline: string;
   amr_subtext: string;
 
@@ -32,8 +35,10 @@ type Props = {
 };
 
 export default function Index() {
+  const data = frontpage_data as Props;
   return (
     <div className="h-screen overflow-auto p-8">
+      <img />
       <h1 className="text-4xl pb-5">{data.headline}</h1>
       <p className="empty:hidden pb-3">{data.introduction_text}</p>
 
@@ -53,8 +58,7 @@ export default function Index() {
         <video
           className="w-full aspect-video"
           src="/images/video_bw_001.mp4"
-          muted
-          autoPlay
+          controls
         />
       </div>
       <p className="empty:hidden pb-4">{data.video_subtext}</p>
@@ -81,6 +85,10 @@ export default function Index() {
           </div>
         ))}
       </div>
+
+      <footer className="py-4">
+        <a className="text-blue-500" href={data.legal_notice_url}>{data.legal_notice_label}</a>
+      </footer>
     </div>
   );
 }
