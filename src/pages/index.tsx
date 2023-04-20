@@ -1,8 +1,11 @@
 import React from "react";
-import BulletPointIcon from "@heroicons/react/24/outline/ClipboardDocumentCheckIcon";
-import PlayIcon from "@heroicons/react/24/solid/PlayIcon";
 import DownIcon from "@heroicons/react/24/solid/ArrowDownCircleIcon";
 import frontpage_data from "../../meta/frontpage.yml";
+import { Link } from "../components/Link";
+import { BulletPoint } from "../components/BulletPoint";
+import { Headline } from "../components/Headline";
+import { AmrCard } from "../components/AmrCard";
+import { VideoCard } from "../components/VideoCard";
 
 type Props = {
   headline: string;
@@ -90,31 +93,26 @@ export default function Index() {
             width={100}
             className="pb-4 mb-24"
           />
-          <ul className="mb-12 grid gap-1">
+          <ul className="mb-12 grid justify-items-start gap-1">
             {data.bulletpoints.map((bulletpoint) => (
-              <li key={bulletpoint.text}>
-                <BulletPointIcon className="inline h-5 mr-2" />
-                {bulletpoint.text}
-              </li>
+              <BulletPoint key={bulletpoint.text} text={bulletpoint.text} />
             ))}
           </ul>
         </div>
-        <div className="pb-4 grid place-items-start gap-2">
-          <a
-            href={data.trial_kit_url}
-            className="bg-blue-500 hover:bg-blue-700 active:bg-blue-600 rounded shadow px-3 py-2"
-          >
-            {data.trial_kit_label}
-          </a>
-
-          <a
-            className="bg-blue-500 rounded shadow px-3 py-2"
-            href={`mailto:${data.mail_address}?subject=${encodeURIComponent(
-              data.mail_subject
-            )}&body=${encodeURIComponent(data.mail_body)}`}
-          >
-            {data.contact_label}
-          </a>
+        <div className="pb-4 flex flex-wrap gap-2">
+          {[
+            { url: data.trial_kit_url, label: data.trial_kit_label },
+            {
+              url: `mailto:${data.mail_address}?subject=${encodeURIComponent(
+                data.mail_subject
+              )}&body=${encodeURIComponent(data.mail_body)}`,
+              label: data.contact_label,
+            },
+          ].map((button) => (
+            <Link key={button.label} href={button.url}>
+              {button.label}
+            </Link>
+          ))}
         </div>
         {showScroll && (
           <button
@@ -132,46 +130,22 @@ export default function Index() {
       </div>
 
       <div className="mb-24" id="amrs">
-        <h2 className="text-3xl py-3">{data.amr_headline}</h2>
+        <Headline>{data.amr_headline}</Headline>
         <p className="empty:hidden pb-3">{data.amr_subtext}</p>
 
         <div className="grid gap-4 grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 pb-4">
           {data.amrs.map((amr) => (
-            <div key={amr.name}>
-              <div className="grid sm:grid-cols-1 gap-4 ">
-                <img
-                  src={amr.image_url}
-                  alt={amr.image_alt}
-                  className="object-contain aspect-video w-full p-4 bg-neutral-800"
-                />
-                <div>
-                  <h3 className="text-2xl pb-2 text-neutral-100">{amr.name}</h3>
-                  <p className="text-neutral-500">{amr.description}</p>
-                </div>
-              </div>
-            </div>
+            <AmrCard key={amr.name} {...amr} />
           ))}
         </div>
       </div>
 
       <div className="mb-24">
-        <h2 className="text-3xl pb-3">{data.video_title}</h2>
-        <p className="empty:hidden pb-4">{data.video_subtext}</p>
+        <Headline>{data.video_title}</Headline>
+        <p className="empty:hidden pb-3">{data.video_subtext}</p>
         <div className="grid gap-4 grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 w-full">
           {data.videos.map((video) => (
-            <a key={video.name} href={video.url} id={video.url}>
-              <div className="relative hover:text-blue-500">
-                <button className="absolute inset-0">
-                  <PlayIcon className="h-12 m-auto shadow-lg stroke-blue-500 stroke-[0.5]" />
-                </button>
-                <img
-                  src={video.thumbnail}
-                  alt={video.name}
-                  className="mb-2 w-full"
-                />
-              </div>
-              <span>{video.name}</span>
-            </a>
+            <VideoCard key={video.name} {...video} />
           ))}
         </div>
       </div>
