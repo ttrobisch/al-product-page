@@ -1,43 +1,63 @@
 headline: Autonomous Logistics
 
-trial_kit_label: Get our trial kit
+logo_url: /images/logo_white.png
+logo_alt: Autonomous Logistics
+
+background_image_url: /images/background_models.png
+background_image_alt: Alle Roboter
+
 page_title: Autonome Logistik | Innovative Technologie für eine effiziente Lieferkette
-introduction_text: Hier sollte ein Text zu AL stehen.
+introduction_text: Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.
 
 trial_kit_url: https://www.t-systems.com/de/de/digital/intelligent-enterprise/autonomous-logistics-trial-kit
+trial_kit_label: Holen Sie das Trialkit
 trial_kit_description: Description of the trial kit.
 
 contact_url: https://www.t-systems.com/de/de/kontakt
-contact_label: Get in touch
+contact_label: Kontaktieren Sie uns
 contact_description: Description of the contact page
 
 legal_notice_url: https://system-communication-products.t-systems-service.com/de/en/search/imprint-828320
 legal_notice_label: Impressum
 
 video_url: /images/video_bw_001.mp4
-video_subtext: This is a text description for the video.
 page_description: Unsere autonome Logistiklösung nutzt innovative Technologie,
   um den Transportprozess zu optimieren und die Effizienz zu steigern.
   Profitieren Sie von schnelleren Lieferungen, reduzierten Kosten und einer
   nahtlosen Lieferkette mit unserer intelligenten Logistikplattform.
-video_title: Video title
-amr_headline: AMR headline
-amr_subtext: Some more text about the amrs.
+video_title: Video Links
+video_subtext: Hier koennen Sie Videos anschauen.
+amr_headline: Unsere Modelle
+amr_subtext: ""
 amrs:
-  - name: Capra
-    description: Capra description
-    image_url: /images/capra.png
+  - name: Capra Hircus
+    description: ""
+    image_url: /images/amr_capra.png
     image_alt: Ein Bild vom Capra
-  - name: Husky
-    description: Husky description
-    image_url: /images/husky.png
+  - name: ClearPath Husky
+    description: ""
+    image_url: /images/amr_husky.png
     image_alt: Ein Bild vom Husky
-  - name: Hund
-    description: Hund description
-    image_url: /images/hund2.png
+  - name: BostonDynamics Spot
+    description: ""
+    image_url: /images/amr_spot.png
     image_alt: Ein Bild vom Hund
 
 bulletpoints:
-  - text: Accelerate digitization of Intralogistics
-  - text: Support hybrid transport modes
-  - text: Seamless integration into open service ecosystem
+  - text: Digitalisierung der Intralogistik beschleunigen
+  - text: Unterstützung hybrider Transportmodi
+  - text: Nahtlose Integration in ein offenes Service-Ökosystem
+
+videos:
+- name: "Was ist ein Campus-Netz? - Netzgeschichten"
+  thumbnail: /images/thumbnail_UG5kQEqtuco.jpg
+  url: https://www.youtube.com/watch?v=UG5kQEqtuco
+- name: "5G Standalone Campus-Netzwerke - Netzgeschichten"
+  thumbnail: /images/thumbnail_77NjkcqJQT4.jpg
+  url: https://www.youtube.com/watch?v=77NjkcqJQT4
+- name: "5G bewegt Roboter: Smarte Lösungen für die vernetzte Fabrik"
+  thumbnail: /images/thumbnail_GDK6FE1TD8A.jpg
+  url: https://www.youtube.com/watch?v=GDK6FE1TD8A
+- name: "T-Systems - Kooperation mit der Bundeswehr"
+  thumbnail: /images/thumbnail_806300842.jpg
+  url: "https://vimeo.com/806300842"

@@ -16,7 +16,7 @@ export default function App({ Component, pageProps }: AppProps) {
         <meta name="description" content={data.page_description} />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
       </Head>
-      <div className={inter.className}>
+      <div className={inter.className + " mx-auto"}>
         <Component {...pageProps} />
       </div>
     </>
