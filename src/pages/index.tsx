@@ -52,10 +52,32 @@ type Props = {
 
 export default function Index() {
   const data = frontpage_data as Props;
+  const [container, setContainer] = React.useState<HTMLDivElement | null>(null);
+  const [showScroll, setShowScroll] = React.useState(true);
+
+  React.useEffect(() => {
+    if (!container) return;
+    const offset = 20;
+    const checkScrollTop = () => {
+      if (container.scrollTop <= offset) {
+        setShowScroll(true);
+      } else if (container.scrollTop > offset) {
+        setShowScroll(false);
+      }
+    };
+    container.addEventListener("scroll", checkScrollTop);
+    return () => {
+      container.removeEventListener("scroll", checkScrollTop);
+    };
+  }, [container]);
+
   return (
-    <div className="col-start-1 row-start-1 p-8 h-screen overflow-auto">
+    <div
+      className="col-start-1 row-start-1 p-8 h-screen overflow-auto"
+      ref={setContainer}
+    >
       <div
-        className="-m-8 mb-24 p-8 bg-cover min-h-screen md:min-h-0 relative"
+        className="-m-8 mb-24 p-8 bg-cover min-h-screen md:min-h-0"
         style={{
           backgroundImage: `url(${data.background_image_url})`,
           backgroundPositionY: "center",
@@ -94,15 +116,19 @@ export default function Index() {
             {data.contact_label}
           </a>
         </div>
-        <button
-          onClick={() => {
-            document.getElementById("amrs")?.scrollIntoView({ behavior: "smooth" });
-          }}
-          className="absolute bottom-0 mx-auto text-center inset-x-0 md:hidden text-white text-opacity-10"
-        >
-          <div className="mb-2">mehr anzeigen</div>
-          <DownIcon className="inline animate-bounce w-12" />
-        </button>
+        {showScroll && (
+          <button
+            onClick={() => {
+              document
+                .getElementById("amrs")
+                ?.scrollIntoView({ behavior: "smooth" });
+            }}
+            className="fixed bottom-0 mx-auto inset-x-0 md:hidden text-white text-opacity-10"
+          >
+            <div className="mb-2">mehr anzeigen</div>
+            <DownIcon className="inline animate-bounce w-12" />
+          </button>
+        )}
       </div>
 
       <div className="mb-24" id="amrs">
