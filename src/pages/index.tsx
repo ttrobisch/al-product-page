@@ -80,7 +80,7 @@ export default function Index() {
       ref={setContainer}
     >
       <div
-        className="-m-8 mb-24 p-8 bg-cover min-h-screen md:min-h-0"
+        className="-m-8 mb-24 p-8 bg-cover min-h-screen md:min-h-[unset]"
         style={{
           backgroundImage: `url(${data.background_image_url})`,
           backgroundPositionY: "center",
