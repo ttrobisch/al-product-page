@@ -85,18 +85,12 @@ export default function Index() {
           </a>
 
           <a
-            href={data.contact_url}
             className="bg-blue-500 rounded shadow px-3 py-2"
-          >
-            {data.contact_label}
-          </a>
-
-          <a
             href={`mailto:${data.mail_address}?subject=${encodeURIComponent(
               data.mail_subject
             )}&body=${encodeURIComponent(data.mail_body)}`}
           >
-            Mail
+            {data.contact_label}
           </a>
         </div>
       </div>
@@ -105,7 +99,7 @@ export default function Index() {
         <h2 className="text-3xl py-3">{data.amr_headline}</h2>
         <p className="empty:hidden pb-3">{data.amr_subtext}</p>
 
-        <div className="grid gap-4 grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 -mx-2 pb-4">
+        <div className="grid gap-4 grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 pb-4">
           {data.amrs.map((amr) => (
             <div key={amr.name}>
               <div className="grid sm:grid-cols-1 gap-4 ">
@@ -133,7 +127,7 @@ export default function Index() {
               <button className="absolute inset-0">
                 <PlayIcon className="h-12 m-auto shadow-lg stroke-blue-500 stroke-[0.5]" />
               </button>
-              <img src={video.thumbnail} alt={video.name} className="mb-2" />
+              <img src={video.thumbnail} alt={video.name} className="mb-2 w-full" />
             </div>
             <span>{video.name}</span>
           </a>
