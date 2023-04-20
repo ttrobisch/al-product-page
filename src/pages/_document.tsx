@@ -9,7 +9,7 @@ export default class MyDocument extends Document {
 
   render() {
     return (
-      <Html dir="ltr">
+      <Html dir="ltr" lang="de" className={"bg-neutral-900 text-slate-100"}>
         <Head>
           <script src="https://identity.netlify.com/v1/netlify-identity-widget.js"></script>
         </Head>

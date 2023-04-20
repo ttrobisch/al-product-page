@@ -53,20 +53,6 @@ collections:
         file: "meta/frontpage.yml"
         description: "Frontpage data"
         fields:
-          - name: headline
-            label: Headline
-            widget: string
-          - name: text
-            label: Text
-            widget: text
-          - label: "Logo image"
-            name: logo_url
-            widget: "image"
-            choose_url: true
-          - label: "Logo image alternative text"
-            name: logo_alt
-            widget: "string"
-            choose_url: true
           - name: bulletpoints
             label: Bulletpoints
             label_singular: Bulletpoint
@@ -75,4 +61,58 @@ collections:
               - name: text
                 widget: "string"
                 hint: A frontpage bullet point
-
+          - name: headline
+            label: Page Headline
+            widget: string
+          - name: introduction_text
+            label: Intro text
+            widget: text
+          - name: trial_kit_url
+            label: Trialkit URL
+            widget: string
+          - name: trial_kit_label
+            label: Trialkit Label
+            widget: string
+          - name: trial_kit_description
+            label: Trialkit Description
+            widget: text
+          - name: contact_url
+            label: Contact URL
+            widget: string
+          - name: contact_label
+            label: Contact Label
+            widget: string
+          - name: contact_description
+            label: Contact Description
+            widget: text
+          - name: video_url
+            label: Video URL
+            widget: file
+          - name: video_title
+            label: Video Title
+            widget: string
+          - name: video_subtext
+            label: Video Subtext
+            widget: text
+          - name: amr_headline
+            label: AMR Section Headline
+            widget: string
+          - name: amr_subtext
+            label: AMR Section Subtext
+            widget: text
+          - name: amrs
+            label: AMRs
+            widget: list
+            fields:
+            - name: name
+              label: AMR Name
+              widget: string
+            - name: description
+              label: Description
+              widget: text
+            - name: image_url
+              label: Image URL
+              widget: image
+            - name: image_alt
+              label: Image Alternativtext
+              widget: string

@@ -7,7 +7,10 @@ module.exports = {
   theme: {
     extend: {},
   },
-  plugins: [require("tailwindcss-rtl")],
+  plugins: [
+    require("tailwindcss-rtl"),
+    require("@tailwindcss/container-queries"),
+  ],
   presets: [
     require("@heathmont/moon-core-tw/lib/private/presets/ds-moon-preset"),
   ],

@@ -1,29 +1,20 @@
+/**
+ * @type {import('next').NextConfig}
+ */
+
 module.exports = {
-  pageExtensions: ["tsx"],
+  output: 'export',
   images: {
-    remotePatterns: [
-      {
-        protocol: "https",
-        hostname: "example.com",
-        port: "",
-        pathname: "/account123/**",
-      },
-    ],
+    unoptimized: true
   },
+  distDir: 'dist',
+  pageExtensions: ["tsx"],
   webpack: (config, { buildId, dev, isServer, defaultLoaders, webpack }) => {
-    config.module.rules.push(
-      ...[
-        {
-          test: /\.yml$/,
-          type: "json",
-          use: "yaml-loader",
-        },
-        {
-          test: /\.svg$/,
-          use: "@svgr/webpack",
-        },
-      ]
-    );
+    config.module.rules.push({
+      test: /\.ya?ml$/,
+      type: "javascript/auto",
+      use: "yaml-loader",
+    });
     return config;
   },
 };
