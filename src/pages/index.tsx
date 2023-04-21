@@ -6,55 +6,64 @@ import { BulletPoint } from "../components/BulletPoint";
 import { Headline } from "../components/Headline";
 import { AmrCard } from "../components/AmrCard";
 import { VideoCard } from "../components/VideoCard";
+import { join } from "path";
+import { readFileSync, readdirSync } from "fs";
+import yaml from "js-yaml";
+import matter from "gray-matter";
 
 type Props = {
-  headline: string;
-  introduction_text: string;
-  background_image_url: string;
-  background_image_alt: string;
-
-  trial_kit_url: string;
-  trial_kit_label: string;
-  trial_kit_description: string;
-
-  contact_url: string;
-  contact_label: string;
-  contact_description: string;
-
-  mail_address: string;
-  mail_subject: string;
-  mail_body: string;
-
-  video_url: string;
-  video_title: string;
-  video_subtext: string;
-
-  legal_notice_url: string;
-  legal_notice_label: string;
-
-  amr_headline: string;
-  amr_subtext: string;
-
   amrs: {
     name: string;
-    description: string;
-    image_url: string;
-    image_alt: string;
+    image: string;
   }[];
+  data: {
+    headline: string;
+    introduction_text: string;
+    background_image_url: string;
+    background_image_alt: string;
 
-  videos: {
-    name: string;
-    thumbnail: string;
-    url: string;
-  }[];
+    trial_kit_url: string;
+    trial_kit_label: string;
+    trial_kit_description: string;
 
-  logo_url: string;
-  logo_alt: string;
-  bulletpoints: { text: string }[];
+    contact_url: string;
+    contact_label: string;
+    contact_description: string;
+
+    mail_address: string;
+    mail_subject: string;
+    mail_body: string;
+
+    video_url: string;
+    video_title: string;
+    video_subtext: string;
+
+    legal_notice_url: string;
+    legal_notice_label: string;
+
+    amr_headline: string;
+    amr_subtext: string;
+
+    amrs: {
+      name: string;
+      description: string;
+      image_url: string;
+      image_alt: string;
+    }[];
+
+    videos: {
+      name: string;
+      thumbnail: string;
+      url: string;
+    }[];
+
+    logo_url: string;
+    logo_alt: string;
+    bulletpoints: { text: string }[];
+  };
 };
 
-export default function Index() {
-  const data = frontpage_data as Props;
+export default function Index({ data, amrs }: Props) {
   const [container, setContainer] = React.useState<HTMLDivElement | null>(null);
   const [showScroll, setShowScroll] = React.useState(true);
 
@@ -126,13 +135,18 @@ export default function Index() {
         )}
       </div>
 
+      <pre><code>{JSON.stringify(amrs, null, 2)}</code></pre>
+
       <div className="mb-24 max-w-7xl m-auto" id="amrs">
         <Headline>{data.amr_headline}</Headline>
         <p className="empty:hidden pb-3">{data.amr_subtext}</p>
 
         <div className="flex flex-wrap gap-4 pb-4">
-          {data.amrs.map((amr) => (
-            <div key={amr.name} className="flex-grow flex-shrink-0 basis-60 lg:basis-80">
+          {amrs.map((amr) => (
+            <div
+              key={amr.name}
+              className="flex-grow flex-shrink-0 basis-60 lg:basis-80"
+            >
               <AmrCard {...amr} />
             </div>
           ))}
@@ -158,4 +172,29 @@ export default function Index() {
       </footer>
     </div>
   );
+}
+
+export function getStaticProps() {
+  const amr_path = join(process.cwd(), "_content/amrs");
+  const amr_files = readdirSync(amr_path);
+
+  const amrs = amr_files.map((file) => {
+    const fileContent = readFileSync(join(amr_path, file), "utf-8");
+    const matterResult = matter(fileContent, {
+      engines: {
+        yaml: (s) => yaml.load(s, { schema: yaml.JSON_SCHEMA }) as object,
+      },
+    });
+    return matterResult.data as {
+      name: string;
+      image: string;
+    };
+  });
+
+  return {
+    props: {
+      data: frontpage_data,
+      amrs,
+    },
+  };
 }

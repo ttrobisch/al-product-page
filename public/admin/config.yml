@@ -9,6 +9,8 @@ collections:
   - name: events
     label: Events
     folder: "_content/events"
+    extension: "mdx"
+    format: "frontmatter"
     create: true
     fields:
       - name: title
@@ -27,8 +29,9 @@ collections:
   - name: amrs
     label: AMRs
     folder: "_content/amrs"
+    extension: "mdx"
+    format: "frontmatter"
     create: true
-    identifier_field: name
     fields:
       - name: name
         label: Name
@@ -143,19 +146,4 @@ collections:
           - name: amr_subtext
             label: AMR Section Subtext
             widget: text
-          - name: amrs
-            label: AMRs
-            widget: list
-            fields:
-            - name: name
-              label: AMR Name
-              widget: string
-            - name: description
-              label: Description
-              widget: text
-            - name: image_url
-              label: Image URL
-              widget: image
-            - name: image_alt
-              label: Image Alternativtext
-              widget: string
+
