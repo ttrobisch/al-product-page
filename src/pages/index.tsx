@@ -86,7 +86,7 @@ export default function Index() {
           backgroundPositionY: "center",
         }}
       >
-        <div className="grid gap-8">
+        <div className="grid gap-8 max-w-7xl mx-auto">
           <img
             src={data.logo_url}
             alt={data.logo_alt}
@@ -99,7 +99,7 @@ export default function Index() {
             ))}
           </ul>
         </div>
-        <div className="pb-4 flex flex-wrap gap-2">
+        <div className="max-w-7xl mx-auto pb-4 flex flex-wrap gap-2">
           {[
             { url: data.trial_kit_url, label: data.trial_kit_label },
             {
@@ -126,7 +126,7 @@ export default function Index() {
         )}
       </div>
 
-      <div className="mb-24" id="amrs">
+      <div className="mb-24 max-w-7xl m-auto" id="amrs">
         <Headline>{data.amr_headline}</Headline>
         <p className="empty:hidden pb-3">{data.amr_subtext}</p>
 
@@ -139,7 +139,7 @@ export default function Index() {
         </div>
       </div>
 
-      <div className="mb-24">
+      <div className="mb-24 max-w-7xl m-auto">
         <Headline>{data.video_title}</Headline>
         <p className="empty:hidden pb-3">{data.video_subtext}</p>
         <div className="flex gap-4 flex-wrap">
@@ -151,7 +151,7 @@ export default function Index() {
         </div>
       </div>
 
-      <footer className="py-4">
+      <footer className="py-4 max-w-7xl m-auto">
         <a className="text-blue-500" href={data.legal_notice_url}>
           {data.legal_notice_label}
         </a>
