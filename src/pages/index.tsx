@@ -64,7 +64,6 @@ type Props = {
 };
 
 export default function Index({ data, amrs }: Props) {
-  const [container, setContainer] = React.useState<HTMLDivElement | null>(null);
   const [showScroll, setShowScroll] = React.useState(true);
 
   React.useEffect(() => {
@@ -83,7 +82,7 @@ export default function Index({ data, amrs }: Props) {
   }, []);
 
   React.useLayoutEffect(() => {
-    debugger
+    debugger;
     const target = window.location.hash;
     const gotoElement = document.getElementById(target);
     if (!gotoElement) return;
@@ -91,10 +90,7 @@ export default function Index({ data, amrs }: Props) {
   }, []);
 
   return (
-    <div
-      className="p-[5vw]"
-      ref={setContainer}
-    >
+    <div className="p-[5vw]">
       <div
         className="-m-[5vw] mb-24 p-[5vw] bg-cover min-h-screen md:min-h-[unset]"
         style={{
