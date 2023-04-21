@@ -6,6 +6,39 @@ public_folder: /images
 publish_mode: editorial_workflow
 
 collections:
+  - name: events
+    label: Events
+    folder: "_content/events"
+    create: true
+    fields:
+      - name: title
+        label: Titel
+        widget: string
+      - name: date
+        label: Zeitpunkt
+        widget: datetime
+      - name: image
+        label: Bild
+        widget: image
+      - name: body
+        label: Inhalt
+        widget: markdown
+
+  - name: amrs
+    label: AMRs
+    folder: "_content/amrs"
+    create: true
+    fields:
+      - name: name
+        label: Name
+        widget: string
+      - name: body
+        label: Inhalt
+        widget: markdown
+      - name: image
+        label: Bild
+        widget: image
+
   - name: "config"
     label: "Config"
     delete: false

@@ -1,0 +1,31 @@
+events:
+- name: Digital X
+  slug: digitalx2022
+  date: September 2022
+  img_url: /images/amr_capra.png
+  img_alt: The DigitalX
+- name: Hannover Messe 2022
+  slug: hmi2022
+  date: September 2022
+  img_url: /images/amr_husky.png
+  img_alt: Hannover Messe 2022
+- name: WvSC
+  slug: wvsc2022
+  date: September 2022
+  img_url: /images/amr_capra.png
+  img_alt: WvSC Event 2022
+- name: Digital X
+  slug: digitalx20222
+  date: September 2022
+  img_url: /images/amr_spot.png
+  img_alt: The DigitalX
+- name: Hannover Messe 2022
+  slug: hmi20222
+  date: September 2022
+  img_url: /images/amr_capra.png
+  img_alt: Hannover Messe 2022
+- name: WvSC
+  slug: wvsc20222
+  date: September 2022
+  img_url: /images/amr_capra.png
+  img_alt: WvSC Event 2022
