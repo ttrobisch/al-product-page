@@ -142,8 +142,6 @@ export default function Index({ data, amrs, videos }: Props) {
         )}
       </div>
 
-      <pre><code>{JSON.stringify(videos, null, 2)}</code></pre>
-
       <div className="mb-24 max-w-7xl m-auto" id="amrs">
         <Headline>{data.amr_headline}</Headline>
         <p className="empty:hidden pb-3">{data.amr_subtext}</p>
