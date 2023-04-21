@@ -16,6 +16,11 @@ type Props = {
     name: string;
     image: string;
   }[];
+  videos: {
+    title: string;
+    thumbnail: string;
+    url: string;
+  }[];
   data: {
     headline: string;
     introduction_text: string;
@@ -63,7 +68,7 @@ type Props = {
   };
 };
 
-export default function Index({ data, amrs }: Props) {
+export default function Index({ data, amrs, videos }: Props) {
   const [showScroll, setShowScroll] = React.useState(true);
 
   React.useEffect(() => {
@@ -89,9 +94,7 @@ export default function Index({ data, amrs }: Props) {
   }, []);
 
   return (
-    <div
-      className="p-[5vw]"
-    >
+    <div className="p-[5vw]">
       <div
         className="-m-[5vw] mb-24 p-[5vw] bg-cover min-h-screen md:min-h-[unset]"
         style={{
@@ -139,6 +142,8 @@ export default function Index({ data, amrs }: Props) {
         )}
       </div>
 
+      <pre><code>{JSON.stringify(videos, null, 2)}</code></pre>
+
       <div className="mb-24 max-w-7xl m-auto" id="amrs">
         <Headline>{data.amr_headline}</Headline>
         <p className="empty:hidden pb-3">{data.amr_subtext}</p>
@@ -160,8 +165,8 @@ export default function Index({ data, amrs }: Props) {
         <Headline>{data.video_title}</Headline>
         <p className="empty:hidden pb-3">{data.video_subtext}</p>
         <div className="flex gap-4 flex-wrap">
-          {data.videos.map((video) => (
-            <div key={video.url} className="flex-grow flex-shrink-0 basis-60">
+          {videos.map((video) => (
+            <div key={video.url} className="flex-grow flex-shrink-0 basis-60 lg:basis-80">
               <VideoCard {...video} />
             </div>
           ))}
@@ -194,10 +199,28 @@ export function getStaticProps() {
     };
   });
 
+  const videos_path = join(process.cwd(), "_content/videos");
+  const videos_files = readdirSync(videos_path);
+
+  const videos = videos_files.map((file) => {
+    const fileContent = readFileSync(join(videos_path, file), "utf-8");
+    const matterResult = matter(fileContent, {
+      engines: {
+        yaml: (s) => yaml.load(s, { schema: yaml.JSON_SCHEMA }) as object,
+      },
+    });
+    return matterResult.data as {
+      title: string;
+      thumbnail: string;
+      url: string;
+    };
+  });
+
   return {
     props: {
       data: frontpage_data,
       amrs,
+      videos,
     },
   };
 }
