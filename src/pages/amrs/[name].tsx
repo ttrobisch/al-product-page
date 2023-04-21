@@ -5,7 +5,7 @@ import { GetStaticPropsContext, GetStaticPropsResult } from "next";
 import { MDXRemote, MDXRemoteSerializeResult } from "next-mdx-remote";
 import { serialize } from "next-mdx-remote/serialize";
 import { join } from "path";
-import { Headline } from "../../components/Headline";
+import BackIcon from "@heroicons/react/20/solid/ArrowLeftCircleIcon";
 
 type Props = {
   name: string;
@@ -14,18 +14,27 @@ type Props = {
 };
 
 const components = {
-  h1: (props: JSX.IntrinsicElements['h1']) => <h1 {...props} className="text-3xl pb-4" />,
-  h2: (props: JSX.IntrinsicElements['h1']) => <h2 {...props} className="text-sm pb-4" />,
-  p: (props: JSX.IntrinsicElements['p']) => <p {...props} className="pb-4" />,
-  a: (props: JSX.IntrinsicElements['a']) => <a {...props} className="bg-blue-500 rounded px-3 py-2" />,
-}
+  h1: (props: JSX.IntrinsicElements["h1"]) => (
+    <h1 {...props} className="text-3xl pb-4" />
+  ),
+  h2: (props: JSX.IntrinsicElements["h1"]) => (
+    <h2 {...props} className="text-sm pb-4" />
+  ),
+  p: (props: JSX.IntrinsicElements["p"]) => <p {...props} className="pb-4" />,
+  a: (props: JSX.IntrinsicElements["a"]) => (
+    <a {...props} className="bg-blue-500 rounded px-3 py-2" />
+  ),
+};
 
 function AmrPage(props: Props) {
   return (
     <div className="max-w-8xl mx-auto p-[5%] min-h-screen grid items-center">
-      <div className="shadow-lg bg-black bg-opacity-10 border min-h-[50vh] border-black border-opacity-20 px-5 py-4 grid lg:grid-cols-2 place-items-center">
-        <img src={props.image} alt={props.name} />
-        <div>
+      <div className="shadow-lg bg-black bg-opacity-10 border min-h-[50vh] border-black border-opacity-20 px-5 py-4 grid grid-rows-[auto_1fr] lg:grid-cols-2 place-items-center">
+        <a className="place-self-start" href="/">
+          <BackIcon className="h-10 w-10 text-neutral-600 hover:text-neutral-400 active:text-neutrail-500" />
+        </a>
+        <img src={props.image} alt={props.name} className="lg:row-start-2" />
+        <div className="lg:row-start-2">
           <MDXRemote {...props.source} components={components} />
         </div>
       </div>

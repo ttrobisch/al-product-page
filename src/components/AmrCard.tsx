@@ -5,7 +5,7 @@ function AmrCard(props: {
   image: string;
 }) {
   return (
-    <a key={props.name} href={"/amrs/" + props.name}>
+    <a key={props.name} href={"/amrs/" + props.name.toLowerCase()}>
       <div className="grid sm:grid-cols-1 bg-black bg-opacity-5 border border-white border-opacity-5">
         <div className="relative">
           <div className="absolute inset-0 bg-black bg-opacity-20" />
