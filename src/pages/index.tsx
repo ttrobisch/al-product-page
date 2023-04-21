@@ -68,24 +68,31 @@ export default function Index({ data, amrs }: Props) {
   const [showScroll, setShowScroll] = React.useState(true);
 
   React.useEffect(() => {
-    if (!container) return;
     const offset = 20;
     const checkScrollTop = () => {
-      if (container.scrollTop <= offset) {
+      if (window.scrollY <= offset) {
         setShowScroll(true);
-      } else if (container.scrollTop > offset) {
+      } else if (window.scrollY > offset) {
         setShowScroll(false);
       }
     };
-    container.addEventListener("scroll", checkScrollTop);
+    window.addEventListener("scroll", checkScrollTop);
     return () => {
-      container.removeEventListener("scroll", checkScrollTop);
+      window.removeEventListener("scroll", checkScrollTop);
     };
-  }, [container]);
+  }, []);
+
+  React.useLayoutEffect(() => {
+    debugger
+    const target = window.location.hash;
+    const gotoElement = document.getElementById(target);
+    if (!gotoElement) return;
+    gotoElement.scrollIntoView({ block: "center" });
+  }, []);
 
   return (
     <div
-      className="col-start-1 row-start-1 p-[5vw] h-screen overflow-auto"
+      className="p-[5vw]"
       ref={setContainer}
     >
       <div
@@ -143,6 +150,7 @@ export default function Index({ data, amrs }: Props) {
           {amrs.map((amr) => (
             <div
               key={amr.name}
+              id={"#" + amr.name.toLowerCase()}
               className="flex-grow flex-shrink-0 basis-60 lg:basis-80"
             >
               <AmrCard {...amr} />

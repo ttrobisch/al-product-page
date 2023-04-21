@@ -1,3 +1,4 @@
+import Link from "next/link";
 import React from "react";
 
 function AmrCard(props: {
@@ -5,7 +6,7 @@ function AmrCard(props: {
   image: string;
 }) {
   return (
-    <a key={props.name} href={"/amrs/" + props.name.toLowerCase()}>
+    <Link key={props.name} href={"/amrs/" + props.name.toLowerCase()}>
       <div className="grid sm:grid-cols-1 bg-black bg-opacity-5 border border-white border-opacity-5">
         <div className="relative">
           <div className="absolute inset-0 bg-black bg-opacity-20" />
@@ -22,7 +23,7 @@ function AmrCard(props: {
           <h3 className="text-neutral-100">{props.name}</h3>
         </div>
       </div>
-    </a>
+    </Link>
   );
 }
 

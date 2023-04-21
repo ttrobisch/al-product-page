@@ -1,11 +1,12 @@
+import BackIcon from "@heroicons/react/20/solid/ArrowLeftCircleIcon";
 import { readFileSync, readdirSync } from "fs";
 import matter from "gray-matter";
 import yaml from "js-yaml";
 import { GetStaticPropsContext, GetStaticPropsResult } from "next";
 import { MDXRemote, MDXRemoteSerializeResult } from "next-mdx-remote";
 import { serialize } from "next-mdx-remote/serialize";
+import Link from "next/link";
 import { join } from "path";
-import BackIcon from "@heroicons/react/20/solid/ArrowLeftCircleIcon";
 
 type Props = {
   name: string;
@@ -30,9 +31,9 @@ function AmrPage(props: Props) {
   return (
     <div className="max-w-8xl mx-auto p-[5%] min-h-screen grid items-center">
       <div className="shadow-lg bg-black bg-opacity-10 border min-h-[50vh] border-black border-opacity-20 px-5 py-4 grid grid-rows-[auto_1fr] lg:grid-cols-2 place-items-center">
-        <a className="place-self-start" href="/">
+        <Link className="place-self-start" href={"/#" + props.name.toLowerCase()}>
           <BackIcon className="h-10 w-10 text-neutral-600 hover:text-neutral-400 active:text-neutrail-500" />
-        </a>
+        </Link>
         <img src={props.image} alt={props.name} className="lg:row-start-2" />
         <div className="lg:row-start-2">
           <MDXRemote {...props.source} components={components} />
@@ -47,8 +48,6 @@ export default AmrPage;
 export function getStaticPaths() {
   const path = process.cwd() + "/_content/amrs";
   const files = readdirSync(path).filter((file) => file.endsWith(".mdx"));
-
-  console.log(files);
 
   return {
     paths: files.map((file) => ({
