@@ -31,6 +31,7 @@ collections:
     folder: "_content/amrs"
     extension: "mdx"
     format: "frontmatter"
+    identifier_field: name
     create: true
     fields:
       - name: name
