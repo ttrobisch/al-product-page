@@ -22,8 +22,7 @@ Email: ${data.get("email")}
 Message: ${data.get("message")}`;
 
     window.location.href =
-      "mailto:al@t-systems.net?subject=Contact&body=" +
-      encodeURIComponent(body);
+      "mailto:al@t-systems.net?subject=Contact&body=" + body;
   }
 
   return (
@@ -43,6 +42,7 @@ Message: ${data.get("message")}`;
             id="name"
             name="name"
             placeholder="Enter your Name"
+            maxLength={50}
             className={classes.input}
           />
         </div>
@@ -56,6 +56,7 @@ Message: ${data.get("message")}`;
             id="email"
             name="email"
             placeholder="Enter your Email"
+            maxLength={50}
             required
             className={classes.input}
           />
@@ -71,6 +72,7 @@ Message: ${data.get("message")}`;
             placeholder="Enter your Message"
             required
             rows={10}
+            maxLength={800}
             className={classes.textarea}
           />
         </div>
