@@ -82,7 +82,6 @@ export default function Index({ data, amrs }: Props) {
   }, []);
 
   React.useLayoutEffect(() => {
-    debugger;
     const target = window.location.hash;
     const gotoElement = document.getElementById(target);
     if (!gotoElement) return;
@@ -90,7 +89,9 @@ export default function Index({ data, amrs }: Props) {
   }, []);
 
   return (
-    <div className="p-[5vw]">
+    <div
+      className="p-[5vw]"
+    >
       <div
         className="-m-[5vw] mb-24 p-[5vw] bg-cover min-h-screen md:min-h-[unset]"
         style={{
