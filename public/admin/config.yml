@@ -36,6 +36,9 @@ collections:
       - name: title
         label: Titel
         widget: string
+      - name: thumbnail
+        label: Thumbnail
+        widget: image
       - name: url
         label: URL
         widget: string
