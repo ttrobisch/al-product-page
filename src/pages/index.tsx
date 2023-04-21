@@ -76,11 +76,11 @@ export default function Index() {
 
   return (
     <div
-      className="col-start-1 row-start-1 p-8 h-screen overflow-auto"
+      className="col-start-1 row-start-1 p-[5vw] h-screen overflow-auto"
       ref={setContainer}
     >
       <div
-        className="-m-8 mb-24 p-8 bg-cover min-h-screen md:min-h-[unset]"
+        className="-m-[5vw] mb-24 p-[5vw] bg-cover min-h-screen md:min-h-[unset]"
         style={{
           backgroundImage: `url(${data.background_image_url})`,
           backgroundPositionY: "center",
@@ -103,9 +103,7 @@ export default function Index() {
           {[
             { url: data.trial_kit_url, label: data.trial_kit_label },
             {
-              url: `mailto:${data.mail_address}?subject=${encodeURIComponent(
-                data.mail_subject
-              )}&body=${encodeURIComponent(data.mail_body)}`,
+              url: data.contact_url,
               label: data.contact_label,
             },
           ].map((button) => (
@@ -121,9 +119,8 @@ export default function Index() {
                 .getElementById("amrs")
                 ?.scrollIntoView({ behavior: "smooth" });
             }}
-            className="fixed bottom-0 mx-auto inset-x-0 md:hidden text-white text-opacity-10"
+            className="fixed bottom-0 mx-auto right-2 md:hidden text-white text-opacity-50"
           >
-            <div className="mb-2">mehr anzeigen</div>
             <DownIcon className="inline animate-bounce w-12" />
           </button>
         )}
@@ -133,9 +130,11 @@ export default function Index() {
         <Headline>{data.amr_headline}</Headline>
         <p className="empty:hidden pb-3">{data.amr_subtext}</p>
 
-        <div className="grid gap-4 grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 pb-4">
+        <div className="flex flex-wrap gap-4 pb-4">
           {data.amrs.map((amr) => (
-            <AmrCard key={amr.name} {...amr} />
+            <div key={amr.name} className="flex-grow flex-shrink-0 basis-60 lg:basis-80">
+              <AmrCard {...amr} />
+            </div>
           ))}
         </div>
       </div>
@@ -143,9 +142,11 @@ export default function Index() {
       <div className="mb-24">
         <Headline>{data.video_title}</Headline>
         <p className="empty:hidden pb-3">{data.video_subtext}</p>
-        <div className="grid gap-4 grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 w-full">
+        <div className="flex gap-4 flex-wrap">
           {data.videos.map((video) => (
-            <VideoCard key={video.name} {...video} />
+            <div key={video.url} className="flex-grow flex-shrink-0 basis-60">
+              <VideoCard {...video} />
+            </div>
           ))}
         </div>
       </div>
