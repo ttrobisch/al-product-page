@@ -1,18 +1,6 @@
 {
-  "short_name": "",
-  "name": "",
-  "icons": [
-    {
-      "src": "icon.png",
-      "type": "image/png",
-      "sizes": "192x192"
-    }
-  ],
-}
-
-{
-    "name":"",
-    "short_name":"",
+    "name":"Autonomous Logistics",
+    "short_name":"AL",
     "icons": [
         {
             "src":"/android-chrome-192x192.png",
