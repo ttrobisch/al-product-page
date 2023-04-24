@@ -39,7 +39,7 @@ function LandingScreen(props: Props) {
         <div className="lg:col-start-2 md:row-span-3">
           <img
             className=""
-            src="/images/amr_husky.png"
+            src="/images/amr_husky.webp"
             alt="Ein Bild vom Husky"
           />
         </div>
