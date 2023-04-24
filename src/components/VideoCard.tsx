@@ -8,9 +8,9 @@ function VideoCard(props: { title: string; url: string; thumbnail: string }) {
       key={video.title}
       href={video.url}
       id={video.url}
-      className="grid border border-white border-opacity-5"
+      className="bg-white grid border border-white border-opacity-5 hover:scale-105 shadow-sm hover:shadow-2xl transition-transform"
     >
-      <div className="relative hover:text-blue-500">
+      <div className="relative text-white hover:text-blue-500">
         <button className="absolute inset-0">
           <PlayIcon className="h-12 m-auto shadow-lg stroke-blue-500 stroke-[0.5]" />
         </button>

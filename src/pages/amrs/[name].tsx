@@ -30,8 +30,11 @@ const components = {
 function AmrPage(props: Props) {
   return (
     <div className="max-w-8xl mx-auto p-[5%] min-h-screen grid items-center">
-      <div className="shadow-lg bg-black bg-opacity-10 border min-h-[50vh] border-black border-opacity-20 px-5 py-4 grid grid-rows-[auto_1fr] lg:grid-cols-2 place-items-center">
-        <Link className="place-self-start" href={"/#" + props.name.toLowerCase()}>
+      <div className="bg-neutral-400 rounded bg-opacity-5 border min-h-[50vh] border-black border-opacity-5 shadow-sm px-5 py-4 grid grid-rows-[auto_1fr] lg:grid-cols-2 place-items-center">
+        <Link
+          className="place-self-start"
+          href={"/#" + props.name.toLowerCase()}
+        >
           <BackIcon className="h-10 w-10 text-neutral-600 hover:text-neutral-400 active:text-neutrail-500" />
         </Link>
         <img src={props.image} alt={props.name} className="lg:row-start-2" />

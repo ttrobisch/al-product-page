@@ -95,27 +95,16 @@ export default function Index({ data, amrs, videos }: Props) {
 
   return (
     <div className="p-[5vw]">
-      <div
-        className="-m-[5vw] mb-24 p-[5vw] bg-cover min-h-screen md:min-h-[unset]"
-        style={{
-          backgroundImage: `url(${data.background_image_url})`,
-          backgroundPositionY: "center",
-        }}
-      >
-        <div className="grid gap-8 max-w-7xl mx-auto">
-          <img
-            src={data.logo_url}
-            alt={data.logo_alt}
-            width={100}
-            className="pb-4 mb-24"
-          />
+      <div className="-m-[5vw] mb-24 p-[5vw] bg-cover relative min-h-screen md:min-h-[unset]">
+        <div className="grid gap-8 max-w-7xl mx-auto relative">
+          <h1 className="text-8xl">Autonomous<br />Logistics</h1>
           <ul className="mb-12 grid justify-items-start gap-1">
             {data.bulletpoints.map((bulletpoint) => (
               <BulletPoint key={bulletpoint.text} text={bulletpoint.text} />
             ))}
           </ul>
         </div>
-        <div className="max-w-7xl mx-auto pb-4 flex flex-wrap gap-2">
+        <div className="max-w-7xl mx-auto pb-4 flex flex-wrap gap-2 relative">
           {[
             { url: data.trial_kit_url, label: data.trial_kit_label },
             {
@@ -135,7 +124,7 @@ export default function Index({ data, amrs, videos }: Props) {
                 .getElementById("amrs")
                 ?.scrollIntoView({ behavior: "smooth" });
             }}
-            className="fixed bottom-0 mx-auto right-2 md:hidden text-white text-opacity-50"
+            className="fixed bottom-0 mx-auto right-2 md:hidden text-black text-opacity-50"
           >
             <DownIcon className="inline animate-bounce w-12" />
           </button>
@@ -164,7 +153,10 @@ export default function Index({ data, amrs, videos }: Props) {
         <p className="empty:hidden pb-3">{data.video_subtext}</p>
         <div className="flex gap-4 flex-wrap">
           {videos.map((video) => (
-            <div key={video.url} className="flex-grow flex-shrink-0 basis-60 lg:basis-80">
+            <div
+              key={video.url}
+              className="flex-grow flex-shrink-0 basis-60 lg:basis-80"
+            >
               <VideoCard {...video} />
             </div>
           ))}
