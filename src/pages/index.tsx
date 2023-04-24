@@ -10,6 +10,7 @@ import { join } from "path";
 import { readFileSync, readdirSync } from "fs";
 import yaml from "js-yaml";
 import matter from "gray-matter";
+import { LandingScreen } from "../components/LandingScreen";
 
 type Props = {
   amrs: {
@@ -69,23 +70,6 @@ type Props = {
 };
 
 export default function Index({ data, amrs, videos }: Props) {
-  const [showScroll, setShowScroll] = React.useState(true);
-
-  React.useEffect(() => {
-    const offset = 20;
-    const checkScrollTop = () => {
-      if (window.scrollY <= offset) {
-        setShowScroll(true);
-      } else if (window.scrollY > offset) {
-        setShowScroll(false);
-      }
-    };
-    window.addEventListener("scroll", checkScrollTop);
-    return () => {
-      window.removeEventListener("scroll", checkScrollTop);
-    };
-  }, []);
-
   React.useLayoutEffect(() => {
     const target = window.location.hash;
     const gotoElement = document.getElementById(target);
@@ -95,40 +79,16 @@ export default function Index({ data, amrs, videos }: Props) {
 
   return (
     <div className="p-[5vw]">
-      <div className="-m-[5vw] mb-24 p-[5vw] bg-cover relative min-h-screen md:min-h-[unset]">
-        <div className="grid gap-8 max-w-7xl mx-auto relative">
-          <h1 className="text-8xl">Autonomous<br />Logistics</h1>
-          <ul className="mb-12 grid justify-items-start gap-1">
-            {data.bulletpoints.map((bulletpoint) => (
-              <BulletPoint key={bulletpoint.text} text={bulletpoint.text} />
-            ))}
-          </ul>
-        </div>
-        <div className="max-w-7xl mx-auto pb-4 flex flex-wrap gap-2 relative">
-          {[
-            { url: data.trial_kit_url, label: data.trial_kit_label },
-            {
-              url: data.contact_url,
-              label: data.contact_label,
-            },
-          ].map((button) => (
-            <Link key={button.label} href={button.url}>
-              {button.label}
-            </Link>
-          ))}
-        </div>
-        {showScroll && (
-          <button
-            onClick={() => {
-              document
-                .getElementById("amrs")
-                ?.scrollIntoView({ behavior: "smooth" });
-            }}
-            className="fixed bottom-0 mx-auto right-2 md:hidden text-black text-opacity-50"
-          >
-            <DownIcon className="inline animate-bounce w-12" />
-          </button>
-        )}
+      <div className="-m-[5vw] mb-24">
+        <LandingScreen
+          bulletpoints={data.bulletpoints}
+          contact_label={data.contact_label}
+          mail_address={data.mail_address}
+          mail_subject={data.mail_subject}
+          mail_body={data.mail_body}
+          trial_kit_label={data.trial_kit_label}
+          trial_kit_url={data.trial_kit_url}
+        />
       </div>
 
       <div className="mb-24 max-w-7xl m-auto" id="amrs">
