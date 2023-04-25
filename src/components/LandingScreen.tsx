@@ -1,7 +1,8 @@
 import React from "react";
+import Image from "next/image";
 import RocketIcon from "@heroicons/react/20/solid/RocketLaunchIcon";
 import LinkIcon from "@heroicons/react/20/solid/LinkIcon";
-import DownIcon from "@heroicons/react/20/solid/ArrowDownIcon";
+import DownIcon from "@heroicons/react/20/solid/ArrowDownCircleIcon";
 
 type Props = {
   bulletpoints: { text: string }[];
@@ -32,15 +33,18 @@ function LandingScreen(props: Props) {
   }, []);
   return (
     <>
-      <div className="px-[5vw] pb-[5vw] md:px-[10vw] bg-cover min-h-screen grid gap-4 lg:grid-cols-[minmax(0,1fr)_minmax(600px,1fr)] mx-auto place-items-center justify-items-start bg-frontscreen lg:bg-frontscreen-big">
+      <div className="box-content min-h-screen grid gap-4 lg:grid-cols-[minmax(0,1fr)_minmax(600px,1fr)] place-items-center justify-items-start">
         <div className="text-white text-4xl md:text-6xl lg:text-8xl font-extrabold">
           Autonomous <br /> Logistics
         </div>
-        <div className="lg:col-start-2 md:row-span-3">
-          <img
-            className=""
+        <div className="justify-self-center lg:justify-self-start lg:col-start-2 md:row-span-3">
+          <Image
             src="/images/amr_husky.webp"
             alt="Ein Bild vom Husky"
+            width={600}
+            height={400}
+            placeholder="empty"
+            priority
           />
         </div>
         <div className="text-sm md:text-base lg:self-end">
@@ -76,7 +80,7 @@ function LandingScreen(props: Props) {
                 .getElementById("amrs")
                 ?.scrollIntoView({ behavior: "smooth" });
             }}
-            className="fixed bottom-0 mx-auto inset-x-0  text-black text-opacity-10"
+            className="fixed bottom-0 mx-auto p-2 right-0  text-black text-opacity-30"
           >
             <div className="mb-2"></div>
             <DownIcon className="inline animate-bounce w-12" />

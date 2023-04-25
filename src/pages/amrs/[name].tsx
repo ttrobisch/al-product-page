@@ -29,8 +29,8 @@ const components = {
 
 function AmrPage(props: Props) {
   return (
-    <div className="max-w-8xl mx-auto p-[5%] min-h-screen grid items-center">
-      <div className="bg-neutral-400 rounded bg-opacity-5 border min-h-[50vh] border-black border-opacity-5 shadow-sm px-5 py-4 grid grid-rows-[auto_1fr] lg:grid-cols-2 place-items-center">
+    <div className="p-[5%] min-h-screen grid items-center">
+      <div className="max-w-7xl mx-auto bg-white rounded border min-h-[50vh] border-black border-opacity-5 shadow-sm px-5 py-4 grid grid-rows-[auto_1fr] lg:grid-cols-2 place-items-center">
         <Link
           className="place-self-start"
           href={"/#" + props.name.toLowerCase()}

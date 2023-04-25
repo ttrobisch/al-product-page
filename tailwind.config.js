@@ -7,10 +7,13 @@ module.exports = {
   theme: {
     extend: {
       backgroundImage: {
-        "frontscreen":
-          "conic-gradient(from 280deg at 100% 40%, rgb(39, 45, 54), rgb(178, 208, 211), rgb(255, 255, 255))",
+        frontscreen:
+          "linear-gradient(185deg, rgb(39, 45, 54) 0vh, rgb(39, 45, 54) 50vh, rgba(151, 185, 188, 0.2) calc(50vh + 1px), rgba(151, 185, 188, 0.5) 100%)",
         "frontscreen-big":
-          "conic-gradient(from 275deg at 65% 55%, rgb(39, 45, 54), rgb(151, 185, 188), rgb(255, 255, 255))",
+          "conic-gradient(from 275deg at 62vw 54vh, rgb(39, 45, 54), rgb(151, 185, 188), transparent)",
+      },
+      backgroundColor: {
+        blue: "rgb(39, 45, 54)",
       },
     },
   },

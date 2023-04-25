@@ -78,8 +78,8 @@ export default function Index({ data, amrs, videos }: Props) {
   }, []);
 
   return (
-    <div className="p-[5vw]">
-      <div className="-m-[5vw] mb-24">
+    <div className="space-y-32 p-[5vw]">
+      <div className="-my-[5vw] mx-auto max-w-7xl pb-[5vw]">
         <LandingScreen
           bulletpoints={data.bulletpoints}
           contact_label={data.contact_label}
@@ -91,16 +91,15 @@ export default function Index({ data, amrs, videos }: Props) {
         />
       </div>
 
-      <div className="mb-24 max-w-7xl m-auto" id="amrs">
+      <div id="amrs" className="m-auto max-w-7xl space-y-8">
         <Headline>{data.amr_headline}</Headline>
-        <p className="empty:hidden pb-3">{data.amr_subtext}</p>
 
-        <div className="flex flex-wrap gap-4 pb-4">
+        <div className="flex flex-wrap-reverse gap-4">
           {amrs.map((amr) => (
             <div
               key={amr.name}
               id={"#" + amr.name.toLowerCase()}
-              className="flex-grow flex-shrink-0 basis-60 lg:basis-80"
+              className="flex-shrink-0 flex-grow basis-60 lg:basis-80"
             >
               <AmrCard {...amr} />
             </div>
@@ -108,14 +107,13 @@ export default function Index({ data, amrs, videos }: Props) {
         </div>
       </div>
 
-      <div className="mb-24 max-w-7xl m-auto">
+      <div className="m-auto mb-24 max-w-7xl space-y-8">
         <Headline>{data.video_title}</Headline>
-        <p className="empty:hidden pb-3">{data.video_subtext}</p>
-        <div className="flex gap-4 flex-wrap">
+        <div className="flex flex-wrap-reverse gap-4">
           {videos.map((video) => (
             <div
               key={video.url}
-              className="flex-grow flex-shrink-0 basis-60 lg:basis-80"
+              className="flex-shrink-0 flex-grow basis-60 lg:basis-80"
             >
               <VideoCard {...video} />
             </div>
@@ -123,11 +121,15 @@ export default function Index({ data, amrs, videos }: Props) {
         </div>
       </div>
 
-      <footer className="py-4 max-w-7xl m-auto">
-        <a className="text-blue-500" href={data.legal_notice_url}>
-          {data.legal_notice_label}
-        </a>
-      </footer>
+      <div>
+        <div className="p-[5vw] -mx-[5vw] -mb-[5vw] bg-blue">
+          <footer className="m-auto max-w-7xl">
+            <a className="text-white" href={data.legal_notice_url}>
+              {data.legal_notice_label}
+            </a>
+          </footer>
+        </div>
+      </div>
     </div>
   );
 }

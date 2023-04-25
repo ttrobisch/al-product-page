@@ -13,7 +13,7 @@ export default class MyDocument extends Document {
         <Head>
           <script src="https://identity.netlify.com/v1/netlify-identity-widget.js"></script>
         </Head>
-        <body>
+        <body className="bg-frontscreen lg:bg-frontscreen-big">
           <Main />
           <NextScript />
         </body>
