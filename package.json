@@ -13,7 +13,6 @@
     "@heathmont/moon-core-tw": "^9.31.0",
     "@heathmont/moon-icons-tw": "^9.28.3",
     "@heroicons/react": "^2.0.17",
-    "@react-spring/parallax": "^9.7.2",
     "clsx": "^1.2.1",
     "next": "^13.3.0",
     "next-mdx-remote": "^4.4.1",
