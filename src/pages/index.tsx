@@ -47,6 +47,8 @@ type Props = {
     legal_notice_url: string;
     legal_notice_label: string;
 
+    page_description: string;
+
     amr_headline: string;
     amr_subtext: string;
 
@@ -82,6 +84,7 @@ export default function Index({ data, amrs, videos }: Props) {
       <div className="-my-[5vw] mx-auto max-w-7xl pb-[5vw]">
         <LandingScreen
           bulletpoints={data.bulletpoints}
+          amr_url={data.background_image_url}
           contact_label={data.contact_label}
           mail_address={data.mail_address}
           mail_subject={data.mail_subject}
@@ -89,6 +92,11 @@ export default function Index({ data, amrs, videos }: Props) {
           trial_kit_label={data.trial_kit_label}
           trial_kit_url={data.trial_kit_url}
         />
+      </div>
+
+      <div className="pb-8 mx-auto lg:pb-24 max-w-7xl text-right text-lg lg:text-3xl uppercase text-gray-400">
+        <div className="mb-8 h-px bg-line" />
+        {data.page_description}
       </div>
 
       <div id="amrs" className="m-auto max-w-7xl space-y-8">
@@ -122,7 +130,7 @@ export default function Index({ data, amrs, videos }: Props) {
       </div>
 
       <div>
-        <div className="p-[5vw] -mx-[5vw] -mb-[5vw] bg-blue">
+        <div className="-mx-[5vw] -mb-[5vw] bg-blue p-[5vw]">
           <footer className="m-auto max-w-7xl">
             <a className="text-white" href={data.legal_notice_url}>
               {data.legal_notice_label}

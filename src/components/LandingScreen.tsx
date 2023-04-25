@@ -6,6 +6,7 @@ import DownIcon from "@heroicons/react/20/solid/ArrowDownCircleIcon";
 
 type Props = {
   bulletpoints: { text: string }[];
+  amr_url: string;
   trial_kit_url: string;
   trial_kit_label: string;
   contact_label: string;
@@ -33,13 +34,13 @@ function LandingScreen(props: Props) {
   }, []);
   return (
     <>
-      <div className="box-content min-h-screen grid gap-4 lg:grid-cols-[minmax(0,1fr)_minmax(600px,1fr)] place-items-center justify-items-start">
-        <div className="text-white text-4xl md:text-6xl lg:text-8xl font-extrabold">
+      <div className="box-content grid min-h-screen place-items-center justify-items-start gap-4 lg:grid-cols-[minmax(0,1fr)_minmax(600px,1fr)]">
+        <div className="text-4xl font-extrabold text-white md:text-6xl lg:text-8xl">
           Autonomous <br /> Logistics
         </div>
-        <div className="justify-self-center lg:justify-self-start lg:col-start-2 md:row-span-3">
+        <div className="justify-self-center md:row-span-3 lg:col-start-2 lg:justify-self-start">
           <Image
-            src="/images/amr_husky.webp"
+            src={props.amr_url}
             alt="Ein Bild vom Husky"
             width={600}
             height={400}
@@ -47,24 +48,23 @@ function LandingScreen(props: Props) {
             priority
           />
         </div>
-        <div className="text-sm md:text-base lg:self-end">
-          <ul className="grid gap-3  text-black ">
+        <div className="text-sm font-extralight md:text-base lg:self-end">
+          <ul className="grid gap-3">
             {props.bulletpoints.map((bulletpoint) => (
               <li key={bulletpoint.text}>{bulletpoint.text}</li>
             ))}
           </ul>
         </div>
-        <div className="pb-4 grid grid-cols-2 gap-4 place-items-start w-max">
+        <div className="grid w-max grid-cols-2 place-items-start gap-4 pb-4">
           <a
             href={props.trial_kit_url}
-            className="bg-[#96B0B3] grid grid-cols-[1fr_auto] justify-items-start items-center gap-3 hover:text-white hover:bg-[#E80381] rounded shadow px-3 py-2 "
+            className="grid grid-cols-[1fr_auto] items-center justify-items-start gap-3 rounded bg-[#96B0B3] px-3 py-2 shadow hover:bg-[#E80381] hover:text-white "
           >
             <RocketIcon className="inline w-4" />
-            &nbsp;
             {props.trial_kit_label}
           </a>
           <a
-            className="bg-[#96B0B3] grid grid-cols-[1fr_auto] justify-items-start items-center gap-3 rounded shadow px-3 py-2 hover:text-white hover:bg-[#E80381]"
+            className="grid grid-cols-[1fr_auto] items-center justify-items-start gap-3 rounded bg-[#96B0B3] px-3 py-2 shadow hover:bg-[#E80381] hover:text-white"
             href={`mailto:${props.mail_address}?subject=${encodeURIComponent(
               props.mail_subject
             )}&body=${encodeURIComponent(props.mail_body)}`}
@@ -80,10 +80,10 @@ function LandingScreen(props: Props) {
                 .getElementById("amrs")
                 ?.scrollIntoView({ behavior: "smooth" });
             }}
-            className="fixed bottom-0 mx-auto p-2 right-0  text-black text-opacity-30"
+            className="fixed bottom-0 right-0 mx-auto p-2  text-black text-opacity-30"
           >
             <div className="mb-2"></div>
-            <DownIcon className="inline animate-bounce w-12" />
+            <DownIcon className="inline w-12 animate-bounce" />
           </button>
         )}
       </div>
