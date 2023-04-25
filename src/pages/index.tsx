@@ -81,7 +81,7 @@ export default function Index({ data, amrs, videos }: Props) {
 
   return (
     <div className=" grid gap-14 p-[5vw]">
-      <div className="-m-[5vw]  mb-0 grid min-h-screen max-w-7xl p-2 ">
+      <div className="-m-[5vw] p-4 mb-0 grid min-h-screen">
         <LandingScreen bulletpoints={data.bulletpoints} amr_url={data.background_image_url} contact_label={data.contact_label} mail_address={data.mail_address} mail_subject={data.mail_subject} mail_body={data.mail_body} trial_kit_label={data.trial_kit_label} trial_kit_url={data.trial_kit_url} />
       </div>
 

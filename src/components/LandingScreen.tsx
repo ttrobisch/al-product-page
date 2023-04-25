@@ -36,7 +36,7 @@ function LandingScreen(props: Props) {
     <>
       <div
         className="box-content grid place-items-center
-       justify-items-start gap-4 rounded-xl bg-frontscreen pl-8 lg:grid-cols-[minmax(0,1fr)_minmax(600px,1fr)]"
+       justify-items-start gap-4 rounded-xl bg-frontscreen pl-8 lg:pl-32 lg:grid-cols-[minmax(0,1fr)_minmax(600px,1fr)]"
       >
         <div className="text-4xl font-extrabold text-white md:text-6xl lg:text-8xl">
           Autonomous <br /> Logistics
@@ -66,7 +66,7 @@ function LandingScreen(props: Props) {
             onClick={() => {
               document.getElementById("amrs")?.scrollIntoView({ behavior: "smooth" });
             }}
-            className="fixed bottom-0 right-0 mx-auto p-2  text-black text-opacity-30"
+            className="fixed bottom-0 right-0 mx-auto pb-5 pr-6  text-black text-opacity-30"
           >
             <div className="mb-2"></div>
             <DownIcon className="inline w-12 animate-bounce" />
