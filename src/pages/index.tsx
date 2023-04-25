@@ -80,26 +80,16 @@ export default function Index({ data, amrs, videos }: Props) {
   }, []);
 
   return (
-    <div className="space-y-32 p-[5vw]">
-      <div className="-my-[5vw] mx-auto max-w-7xl pb-[5vw]">
-        <LandingScreen
-          bulletpoints={data.bulletpoints}
-          amr_url={data.background_image_url}
-          contact_label={data.contact_label}
-          mail_address={data.mail_address}
-          mail_subject={data.mail_subject}
-          mail_body={data.mail_body}
-          trial_kit_label={data.trial_kit_label}
-          trial_kit_url={data.trial_kit_url}
-        />
+    <div className=" grid gap-14 p-[5vw]">
+      <div className="-m-[5vw]  mb-0 grid min-h-screen max-w-7xl p-2 ">
+        <LandingScreen bulletpoints={data.bulletpoints} amr_url={data.background_image_url} contact_label={data.contact_label} mail_address={data.mail_address} mail_subject={data.mail_subject} mail_body={data.mail_body} trial_kit_label={data.trial_kit_label} trial_kit_url={data.trial_kit_url} />
       </div>
 
-      <div
-        className="mx-auto relative max-w-7xl pb-8 text-right text-lg font-medium uppercase text-transparent lg:pb-24 lg:text-3xl"
-      >
+      <div className="relative mx-auto max-w-7xl pb-8 text-right text-lg font-medium uppercase text-transparent lg:text-3xl">
         <div className="mb-8 h-px bg-line" />
-        <div className="absolute" 
-        style={{ textShadow: "rgba(0, 0, 0, 0.2) 2px 3px 6px" }}>{data.page_description}</div>
+        <div className="absolute" style={{ textShadow: "rgba(0, 0, 0, 0.2) 2px 3px 6px" }}>
+          {data.page_description}
+        </div>
         <div className="relative bg-gradient-to-r from-gray-400 via-pink-400 to-pink-500 bg-clip-text ">{data.page_description}</div>
       </div>
 
@@ -108,11 +98,7 @@ export default function Index({ data, amrs, videos }: Props) {
 
         <div className="flex flex-wrap-reverse gap-4">
           {amrs.map((amr) => (
-            <div
-              key={amr.name}
-              id={"#" + amr.name.toLowerCase()}
-              className="flex-shrink-0 flex-grow basis-60 lg:basis-80"
-            >
+            <div key={amr.name} id={"#" + amr.name.toLowerCase()} className="flex-shrink-0 flex-grow basis-60 lg:basis-80">
               <AmrCard {...amr} />
             </div>
           ))}
@@ -123,10 +109,7 @@ export default function Index({ data, amrs, videos }: Props) {
         <Headline>{data.video_title}</Headline>
         <div className="flex flex-wrap-reverse gap-4">
           {videos.map((video) => (
-            <div
-              key={video.url}
-              className="flex-shrink-0 flex-grow basis-60 lg:basis-80"
-            >
+            <div key={video.url} className="flex-shrink-0 flex-grow basis-60 lg:basis-80">
               <VideoCard {...video} />
             </div>
           ))}
