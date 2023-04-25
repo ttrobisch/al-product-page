@@ -94,9 +94,13 @@ export default function Index({ data, amrs, videos }: Props) {
         />
       </div>
 
-      <div className="mx-auto max-w-7xl bg-gradient-to-r from-gray-400 via-pink-600 to-pink-800 bg-clip-text pb-8 text-right text-lg uppercase text-transparent lg:pb-24 lg:text-3xl">
+      <div
+        className="mx-auto relative max-w-7xl pb-8 text-right text-lg font-medium uppercase text-transparent lg:pb-24 lg:text-3xl"
+      >
         <div className="mb-8 h-px bg-line" />
-        {data.page_description}
+        <div className="absolute" 
+        style={{ textShadow: "rgba(0, 0, 0, 0.2) 2px 3px 6px" }}>{data.page_description}</div>
+        <div className="relative bg-gradient-to-r from-gray-400 via-pink-400 to-pink-500 bg-clip-text ">{data.page_description}</div>
       </div>
 
       <div id="amrs" className="m-auto max-w-7xl space-y-8">

@@ -16,14 +16,14 @@ function EventCard(props: Event) {
   return (
     <Link
       href={"/events/" + props.slug}
-      className="w-60 h-[30rem] rounded bg-neutral-100 grid items-end"
+      className="grid h-[30rem] w-60 items-end rounded bg-neutral-100"
       style={{
         backgroundImage: `url(${props.img_url})`,
         backgroundSize: "cover",
         backgroundPosition: "center",
       }}
     >
-      <div className="px-8 py-6 bg-neutral-800 rounded-b">
+      <div className="rounded-b bg-neutral-800 px-8 py-6">
         <h1 className="text-white">{props.name}</h1>
         <time className="text-sm text-white text-opacity-60">{props.date}</time>
       </div>
@@ -33,7 +33,7 @@ function EventCard(props: Event) {
 
 function Carousel(props: { children: React.ReactNode | React.ReactNode[] }) {
   return (
-    <div className="flex overflow-auto gap-4 px-4">
+    <div className="flex gap-4 overflow-auto px-4">
       {React.Children.map(props.children, (child, index) => {
         if (!React.isValidElement(child)) return null;
         return <div data-i={index}>{child}</div>;
@@ -52,14 +52,14 @@ function Pagination(props: { children: React.ReactNode | React.ReactNode[] }) {
 
   return (
     <>
-      <div className="grid place-items-center mb-4">
+      <div className="mb-4 grid place-items-center">
         <Carousel>{pageChildren}</Carousel>
       </div>
       <div className="flex justify-center gap-4">
         {Array.from({ length: pages }).map((_, i) => (
           <button
             key={i}
-            className="w-4 h-4 rounded-full bg-neutral-800"
+            className="h-4 w-4 rounded-full bg-neutral-800"
             onClick={() => setPage(i)}
           />
         ))}
@@ -70,23 +70,15 @@ function Pagination(props: { children: React.ReactNode | React.ReactNode[] }) {
 
 function Events() {
   return (
-    <>
-      <h1>Events</h1>
-      <nav>
-        <ul>
+    <div className="grid min-h-screen place-items-center">
+      <div>
+        <Pagination>
           {events.map((event) => (
-            <li key={event.slug}>
-              <Link href={"/events/" + event.slug}>{event.name}</Link>
-            </li>
+            <EventCard key={event.slug} {...event} />
           ))}
-        </ul>
-      </nav>
-      <Pagination>
-        {events.map((event) => (
-          <EventCard key={event.slug} {...event} />
-        ))}
-      </Pagination>
-    </>
+        </Pagination>
+      </div>
+    </div>
   );
 }
 
