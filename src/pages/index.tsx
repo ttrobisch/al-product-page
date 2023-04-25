@@ -94,7 +94,7 @@ export default function Index({ data, amrs, videos }: Props) {
         />
       </div>
 
-      <div className="pb-8 mx-auto lg:pb-24 max-w-7xl text-right text-lg lg:text-3xl uppercase text-gray-400">
+      <div className="mx-auto max-w-7xl bg-gradient-to-r from-gray-400 via-pink-600 to-pink-800 bg-clip-text pb-8 text-right text-lg uppercase text-transparent lg:pb-24 lg:text-3xl">
         <div className="mb-8 h-px bg-line" />
         {data.page_description}
       </div>
