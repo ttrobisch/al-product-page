@@ -111,6 +111,9 @@ collections:
         file: "meta/frontpage.yml"
         description: "Frontpage data"
         fields:
+          - name: page_description
+            label: Meta Text
+            widget: text
           - name: bulletpoints
             label: Bulletpoints
             label_singular: Bulletpoint
