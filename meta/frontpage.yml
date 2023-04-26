@@ -17,56 +17,22 @@ trial_kit_description: Description of the trial kit.
 contact_label: Kontakt
 video_url: /images/video_bw_001.mp4
 video_subtext: " "
-mail_subject: Interesse an AL
+mail_subject: Ich möchte mehr zu AL erfahren
 page_title: Autonome Logistik | Innovative Technologie für eine effiziente Lieferkette
 contact_url: /contact
 contact_description: " "
-video_title: Video Links
+video_title: Unsere Roboter in Aktion
 mail_address: al@t-systems.com
-mail_body: Ich habe Interesse an weiteren Informationen zu AL.
+mail_body: ""
 page_description: Unsere autonome Logistiklösung nutzt innovative Technologie,
   um den Transportprozess zu optimieren und die Effizienz zu steigern.
   Profitieren Sie von schnelleren Lieferungen, reduzierten Kosten und einer
   nahtlosen Lieferkette mit unserer intelligenten Logistikplattform.
 amr_headline: Unsere Modelle
-amrs:
-  - name: Capra Hircus
-    description: " "
-    image_url: /images/amr_capra.png
-    image_alt: Ein Bild vom Capra
-  - name: ClearPath Husky
-    description: " "
-    image_url: /images/amr_husky.png
-    image_alt: Ein Bild vom Husky
-  - name: BostonDynamics Spot
-    description: " "
-    image_url: /images/amr_spot.png
-    image_alt: Ein Bild vom Hund
-  - name: Palfinger Crayler
-    image_url: /images/amr_spot.png
-    image_alt: Crayler
-    description: " "
-  - name: T-Bot
-    image_url: /images/amr_spot.png
-    image_alt: T-Bot
-    description: " "
 legal_notice_url: https://www.t-systems.com/de/de/impressum
 legal_notice_label: Impressum
 amr_subtext: " "
 background_image_alt: Alle Roboter
 logo_alt: Autonomous Logistics
-videos:
-  - name: Was ist ein Campus-Netz? - Netzgeschichten
-    thumbnail: /images/thumbnail_UG5kQEqtuco.jpg
-    url: https://www.youtube.com/watch?v=UG5kQEqtuco
-  - name: 5G Standalone Campus-Netzwerke - Netzgeschichten
-    thumbnail: /images/thumbnail_77NjkcqJQT4.jpg
-    url: https://www.youtube.com/watch?v=77NjkcqJQT4
-  - name: "5G bewegt Roboter: Smarte Lösungen für die vernetzte Fabrik"
-    thumbnail: /images/thumbnail_GDK6FE1TD8A.jpg
-    url: https://www.youtube.com/watch?v=GDK6FE1TD8A
-  - name: T-Systems - Kooperation mit der Bundeswehr
-    thumbnail: /images/thumbnail_806300842.jpg
-    url: https://vimeo.com/806300842
 background_image_url: /images/amr_husky_shadow.webp
 logo_url: /images/logo_white.png
