@@ -2,15 +2,18 @@ import BackIcon from "@heroicons/react/20/solid/ArrowLeftCircleIcon";
 import { readFileSync, readdirSync } from "fs";
 import matter from "gray-matter";
 import yaml from "js-yaml";
-import { GetStaticPropsContext, GetStaticPropsResult } from "next";
+import { GetStaticPathsContext, GetStaticPathsResult, GetStaticPropsContext, GetStaticPropsResult } from "next";
 import { MDXRemote, MDXRemoteSerializeResult } from "next-mdx-remote";
 import { serialize } from "next-mdx-remote/serialize";
+import { Head } from "next/document";
 import Link from "next/link";
 import { join } from "path";
 
 type Props = {
   name: string;
   image: string;
+  page_title: string;
+  page_description: string;
   source: MDXRemoteSerializeResult;
 };
 
@@ -30,6 +33,10 @@ const components = {
 function AmrPage(props: Props) {
   return (
     <div className="p-[5%] min-h-screen grid items-center">
+      <Head>
+        <title>{props.page_title}</title>
+        <meta name="description" content={props.page_description} />
+      </Head>
       <div className="max-w-7xl mx-auto bg-white rounded border min-h-[50vh] border-black border-opacity-5 shadow-sm px-5 py-4 grid grid-rows-[auto_1fr] lg:grid-cols-2 place-items-center">
         <Link
           className="place-self-start"
@@ -48,26 +55,32 @@ function AmrPage(props: Props) {
 
 export default AmrPage;
 
-export function getStaticPaths() {
-  const path = process.cwd() + "/_content/amrs";
-  const files = readdirSync(path).filter((file) => file.endsWith(".mdx"));
+export function getStaticPaths(context: GetStaticPathsContext): GetStaticPathsResult {
 
-  return {
-    paths: files.map((file) => ({
+  const paths = context.locales.map(locale => {
+    const path = process.cwd() + "/_content/amrs_" + locale;
+    const files = readdirSync(path).filter((file) => file.endsWith(".mdx"));
+
+    return files.map((file) => ({
       params: {
-        name: file.replace(".mdx", ""),
+        name: file.replace(/\.mdx$/, ""),
       },
-    })),
+      locale: locale,
+    }));
+  })
+  return {
+    paths: paths.flat(),
     fallback: false,
   };
 }
 
 export async function getStaticProps({
   params: { name },
+  locale,
 }: GetStaticPropsContext<{ name: string }>): Promise<
   GetStaticPropsResult<Props>
 > {
-  const path = process.cwd() + "/_content/amrs";
+  let path = process.cwd() + "/_content/amrs_" + locale;
   const file = join(path, name + ".mdx").replaceAll("\\", "/");
   const fileContent = readFileSync(file, "utf-8");
   const matterResult = matter(fileContent, {
@@ -85,10 +98,23 @@ export async function getStaticProps({
     parseFrontmatter: true,
   });
 
-  console.log(matterData);
-
+  const frontpage_path = join(process.cwd(), "meta/frontpage." + locale + ".yml");
+  const frontpage_data = readFileSync(frontpage_path, "utf-8");
+  const result = matter(frontpage_data, {
+    engines: {
+      yaml: (s) => yaml.load(s, { schema: yaml.JSON_SCHEMA }) as object,
+    },
+  });
+  const data = {
+    page_title: result.data.page_title,
+    page_description: result.data.page_description,
+  } as {
+    page_title: string;
+    page_description: string;
+  };
   return {
     props: {
+      ...data,
       ...matterData,
       source: mdxSource,
     },

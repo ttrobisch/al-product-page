@@ -108,7 +108,7 @@ collections:
     files:
       - name: "frontpage"
         label: "Frontpage"
-        file: "meta/frontpage.yml"
+        file: "meta/frontpage.de.yml"
         description: "Frontpage data"
         fields:
           - name: page_description

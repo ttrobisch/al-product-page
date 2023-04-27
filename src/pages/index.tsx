@@ -1,8 +1,4 @@
 import React from "react";
-import DownIcon from "@heroicons/react/24/solid/ArrowDownCircleIcon";
-import frontpage_data from "../../meta/frontpage.yml";
-import { Link } from "../components/Link";
-import { BulletPoint } from "../components/BulletPoint";
 import { Headline } from "../components/Headline";
 import { AmrCard } from "../components/AmrCard";
 import { VideoCard } from "../components/VideoCard";
@@ -11,6 +7,8 @@ import { readFileSync, readdirSync } from "fs";
 import yaml from "js-yaml";
 import matter from "gray-matter";
 import { LandingScreen } from "../components/LandingScreen";
+import { GetStaticPropsContext } from "next";
+import Head from "next/head";
 
 type Props = {
   amrs: {
@@ -47,6 +45,7 @@ type Props = {
     legal_notice_url: string;
     legal_notice_label: string;
 
+    page_title: string;
     page_description: string;
 
     amr_headline: string;
@@ -74,6 +73,10 @@ type Props = {
 export default function Index({ data, amrs, videos }: Props) {
   return (
     <div className="grid gap-14 p-[5vw]">
+      <Head>
+        <title>{data.page_title}</title>
+        <meta name="description" content={data.page_description} />
+      </Head>
       <div className="-m-[5vw] p-4 mb-0 grid min-h-screen">
         <LandingScreen bulletpoints={data.bulletpoints} amr_url={data.background_image_url} contact_label={data.contact_label} mail_address={data.mail_address} mail_subject={data.mail_subject} mail_body={data.mail_body} trial_kit_label={data.trial_kit_label} trial_kit_url={data.trial_kit_url} />
       </div>
@@ -122,8 +125,8 @@ export default function Index({ data, amrs, videos }: Props) {
   );
 }
 
-export function getStaticProps() {
-  const amr_path = join(process.cwd(), "_content/amrs");
+export function getStaticProps(props: GetStaticPropsContext) {
+  const amr_path = join(process.cwd(), "_content/amrs_" + props.locale);
   const amr_files = readdirSync(amr_path);
 
   const amrs = amr_files.map((file) => {
@@ -139,7 +142,7 @@ export function getStaticProps() {
     };
   });
 
-  const videos_path = join(process.cwd(), "_content/videos");
+  const videos_path = join(process.cwd(), "_content/videos_" + props.locale);
   const videos_files = readdirSync(videos_path);
 
   const videos = videos_files.map((file) => {
@@ -156,9 +159,18 @@ export function getStaticProps() {
     };
   });
 
+  const data_path = join(process.cwd(), "meta/frontpage." + props.locale + ".yml");
+  const fileContent = readFileSync(data_path, "utf-8");
+  const result = matter(fileContent, {
+    engines: {
+      yaml: (s) => yaml.load(s, { schema: yaml.JSON_SCHEMA }) as object,
+    },
+  });
+  const data = result.data as Props['data'];
+
   return {
     props: {
-      data: frontpage_data,
+      data,
       amrs,
       videos,
     },

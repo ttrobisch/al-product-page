@@ -3,11 +3,11 @@
  */
 
 module.exports = {
-  output: 'export',
-  images: {
-    unoptimized: true
+  i18n: {
+    locales: ['en', 'de'],
+    localeDetection: true,
+    defaultLocale: 'en',
   },
-  distDir: 'dist',
   pageExtensions: ["tsx"],
   webpack: (config, { buildId, dev, isServer, defaultLoaders, webpack }) => {
     config.module.rules.push({
