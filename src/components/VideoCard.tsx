@@ -10,11 +10,11 @@ function VideoCard(props: { title: string; url: string; thumbnail: string }) {
       href={video.url}
       id={video.url}
       target="_blank"
-      className="bg-white grid grid-rows-[auto_1fr] border border-white border-opacity-5 hover:scale-105 shadow-sm hover:shadow-2xl transition-transform h-full"
+      className="grid h-full grid-rows-[auto_1fr] rounded-xl border border-white border-opacity-5 bg-white shadow-sm transition-transform hover:scale-105 hover:shadow-2xl"
     >
       <div className="relative text-white hover:text-blue-500">
-        <button className="absolute w-full aspect-video">
-          <PlayIcon className="h-12 m-auto stroke-blue-500 stroke-[0.5]" />
+        <button className="absolute aspect-video w-full">
+          <PlayIcon className="m-auto h-12 stroke-blue-500 stroke-[0.5]" />
         </button>
         <Image
           placeholder="empty"
@@ -22,7 +22,7 @@ function VideoCard(props: { title: string; url: string; thumbnail: string }) {
           alt={video.title}
           width={600}
           height={400}
-          className="w-full aspect-video"
+          className="aspect-video w-full rounded-t-xl"
           priority={false}
         />
       </div>

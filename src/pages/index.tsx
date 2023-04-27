@@ -72,20 +72,13 @@ type Props = {
 };
 
 export default function Index({ data, amrs, videos }: Props) {
-  React.useLayoutEffect(() => {
-    const target = window.location.hash;
-    const gotoElement = document.getElementById(target);
-    if (!gotoElement) return;
-    gotoElement.scrollIntoView({ block: "center" });
-  }, []);
-
   return (
-    <div className=" grid gap-14 p-[5vw]">
+    <div className="grid gap-14 p-[5vw]">
       <div className="-m-[5vw] p-4 mb-0 grid min-h-screen">
         <LandingScreen bulletpoints={data.bulletpoints} amr_url={data.background_image_url} contact_label={data.contact_label} mail_address={data.mail_address} mail_subject={data.mail_subject} mail_body={data.mail_body} trial_kit_label={data.trial_kit_label} trial_kit_url={data.trial_kit_url} />
       </div>
 
-      <div className="relative mx-auto max-w-7xl pb-8 text-right text-lg font-medium uppercase text-transparent lg:text-3xl">
+      <div className="relative mx-auto max-w-screen-2xl pb-8 text-right text-lg font-medium uppercase text-transparent lg:text-3xl">
         <div className="mb-8 h-px bg-line" />
         <div className="absolute" style={{ textShadow: "rgba(0, 0, 0, 0.2) 2px 3px 6px" }}>
           {data.page_description}
@@ -93,23 +86,23 @@ export default function Index({ data, amrs, videos }: Props) {
         <div className="relative bg-gradient-to-r from-gray-400 via-pink-400 to-pink-500 bg-clip-text ">{data.page_description}</div>
       </div>
 
-      <div id="amrs" className="m-auto max-w-7xl space-y-8">
+      <div id="amrs" className="mx-auto max-w-screen-2xl w-full space-y-8">
         <Headline>{data.amr_headline}</Headline>
 
-        <div className="flex flex-wrap-reverse gap-4">
+        <div className="grid grid-cols-[repeat(auto-fill,minmax(20rem,1fr))] gap-4">
           {amrs.map((amr) => (
-            <div key={amr.name} id={"#" + amr.name.toLowerCase()} className="flex-shrink-0 flex-grow basis-60 lg:basis-80">
+            <div key={amr.name} id={"#" + amr.name.toLowerCase()} className="">
               <AmrCard {...amr} />
             </div>
           ))}
         </div>
       </div>
 
-      <div className="m-auto mb-24 max-w-7xl space-y-8">
+      <div id="videos" className="mx-auto mb-24 max-w-screen-2xl w-full space-y-8">
         <Headline>{data.video_title}</Headline>
-        <div className="flex flex-wrap-reverse gap-4">
+        <div className="grid grid-cols-[repeat(auto-fill,minmax(20rem,1fr))] gap-4">
           {videos.map((video) => (
-            <div key={video.url} className="flex-shrink-0 flex-grow basis-60 lg:basis-80">
+            <div key={video.url}>
               <VideoCard {...video} />
             </div>
           ))}
@@ -118,7 +111,7 @@ export default function Index({ data, amrs, videos }: Props) {
 
       <div>
         <div className="-mx-[5vw] -mb-[5vw] bg-blue p-[5vw]">
-          <footer className="m-auto max-w-7xl">
+          <footer className="m-auto max-w-screen-2xl">
             <a className="text-white" href={data.legal_notice_url}>
               {data.legal_notice_label}
             </a>
