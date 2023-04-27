@@ -81,12 +81,9 @@ export default function Index({ data, amrs, videos }: Props) {
         <LandingScreen bulletpoints={data.bulletpoints} amr_url={data.background_image_url} contact_label={data.contact_label} mail_address={data.mail_address} mail_subject={data.mail_subject} mail_body={data.mail_body} trial_kit_label={data.trial_kit_label} trial_kit_url={data.trial_kit_url} />
       </div>
 
-      <div className="relative mx-auto max-w-screen-2xl pb-8 text-right text-lg font-medium uppercase text-transparent lg:text-3xl">
+      <div className="mx-auto max-w-screen-2xl pb-8 text-right text-lg font-medium uppercase text-transparent lg:text-3xl">
         <div className="mb-8 h-px bg-line" />
-        <div className="absolute" style={{ textShadow: "rgba(0, 0, 0, 0.2) 2px 3px 6px" }}>
-          {data.page_description}
-        </div>
-        <div className="relative bg-gradient-to-r from-gray-400 via-pink-400 to-pink-500 bg-clip-text ">{data.page_description}</div>
+        <div className="text-gray-400">{data.page_description}</div>
       </div>
 
       <div id="amrs" className="mx-auto max-w-screen-2xl w-full space-y-8">

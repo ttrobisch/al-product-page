@@ -5,6 +5,7 @@ import yaml from "js-yaml";
 import { GetStaticPathsContext, GetStaticPathsResult, GetStaticPropsContext, GetStaticPropsResult } from "next";
 import { MDXRemote, MDXRemoteSerializeResult } from "next-mdx-remote";
 import { serialize } from "next-mdx-remote/serialize";
+import Image from "next/image";
 import Head from "next/head";
 import Link from "next/link";
 import { join } from "path";
@@ -44,7 +45,7 @@ function AmrPage(props: Props) {
         >
           <BackIcon className="h-10 w-10 text-neutral-600 hover:text-neutral-400 active:text-neutrail-500" />
         </Link>
-        <img src={props.image} alt={props.name} className="lg:row-start-2" />
+        <Image src={props.image} alt={props.name} width={600} height={400} className="lg:row-start-2" />
         <div className="lg:row-start-2">
           <MDXRemote {...props.source} components={components} />
         </div>
