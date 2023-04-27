@@ -5,7 +5,7 @@ import yaml from "js-yaml";
 import { GetStaticPathsContext, GetStaticPathsResult, GetStaticPropsContext, GetStaticPropsResult } from "next";
 import { MDXRemote, MDXRemoteSerializeResult } from "next-mdx-remote";
 import { serialize } from "next-mdx-remote/serialize";
-import { Head } from "next/document";
+import Head from "next/head";
 import Link from "next/link";
 import { join } from "path";
 

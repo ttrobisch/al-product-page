@@ -1,13 +1,11 @@
 import { AppProps } from "next/app";
 import "../lib/styles.css";
-import "@heathmont/moon-themes-tw/lib/moon.css";
 import Head from "next/head";
 import { Inter } from 'next/font/google'
 
 const inter = Inter({ subsets: ["latin"], preload: true });
 
 export default function App({ Component, pageProps }: AppProps) {
-  console.log(pageProps);
   return (
     <>
       <Head>
