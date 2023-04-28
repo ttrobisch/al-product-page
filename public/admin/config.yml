@@ -6,6 +6,81 @@ public_folder: /images
 publish_mode: editorial_workflow
 
 collections:
+  - name: amrs german
+    label: AMRs Deutsch
+    folder: "_content/amrs_de"
+    extension: "mdx"
+    format: "frontmatter"
+    identifier_field: name
+    create: true
+    fields:
+      - name: name
+        label: Name
+        widget: string
+      - name: body
+        label: Inhalt
+        widget: markdown
+      - name: image
+        label: Bild
+        widget: image
+
+  - name: amrs english
+    label: AMRs Englisch
+    folder: "_content/amrs_en"
+    extension: "mdx"
+    format: "frontmatter"
+    identifier_field: name
+    create: true
+    fields:
+      - name: name
+        label: Name
+        widget: string
+      - name: body
+        label: Inhalt
+        widget: markdown
+      - name: image
+        label: Bild
+        widget: image
+  
+  - name: videos german
+    label: Videos Deutsch
+    folder: "_content/videos_de"
+    extension: "mdx"
+    format: "frontmatter"
+    create: true
+    fields:
+      - name: title
+        label: Titel
+        widget: string
+      - name: thumbnail
+        label: Thumbnail
+        widget: image
+      - name: url
+        label: URL
+        widget: string
+      - name: body
+        label: Inhalt
+        widget: markdown
+  - name: videos english
+    label: Videos Englisch
+    folder: "_content/videos_en"
+    extension: "mdx"
+    format: "frontmatter"
+    create: true
+    fields:
+      - name: title
+        label: Titel
+        widget: string
+      - name: thumbnail
+        label: Thumbnail
+        widget: image
+      - name: url
+        label: URL
+        widget: string
+      - name: body
+        label: Inhalt
+        widget: markdown
+
   - name: events
     label: Events
     folder: "_content/events"
@@ -25,44 +100,6 @@ collections:
       - name: body
         label: Inhalt
         widget: markdown
-  
-  - name: videos
-    label: Videos
-    folder: "_content/videos"
-    extension: "mdx"
-    format: "frontmatter"
-    create: true
-    fields:
-      - name: title
-        label: Titel
-        widget: string
-      - name: thumbnail
-        label: Thumbnail
-        widget: image
-      - name: url
-        label: URL
-        widget: string
-      - name: body
-        label: Inhalt
-        widget: markdown
-
-  - name: amrs
-    label: AMRs
-    folder: "_content/amrs"
-    extension: "mdx"
-    format: "frontmatter"
-    identifier_field: name
-    create: true
-    fields:
-      - name: name
-        label: Name
-        widget: string
-      - name: body
-        label: Inhalt
-        widget: markdown
-      - name: image
-        label: Bild
-        widget: image
 
   - name: "config"
     label: "Config"
