@@ -106,10 +106,10 @@ collections:
     editor:
       preview: true
     files:
-      - name: "frontpage"
+      - name: "frontpage_de"
         label: "Frontpage"
         file: "meta/frontpage.de.yml"
-        description: "Frontpage data"
+        description: "Frontpage data de"
         fields:
           - name: page_description
             label: Meta Text
@@ -172,10 +172,10 @@ collections:
             widget: text
 
 
-      - name: "frontpage"
+      - name: "frontpage_en"
         label: "Frontpage Englisch"
         file: "meta/frontpage.en.yml"
-        description: "Frontpage data"
+        description: "Frontpage data en"
         fields:
           - name: page_description
             label: Meta Text
