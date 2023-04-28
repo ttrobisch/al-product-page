@@ -36,7 +36,7 @@ function LandingScreen(props: Props) {
     <>
       <div
         className="box-content grid place-items-center
-       justify-items-start gap-4 rounded-xl bg-frontscreen pl-8 lg:pl-32 lg:grid-cols-[minmax(0,1fr)_minmax(600px,1fr)]"
+       justify-items-start gap-4 rounded-xl bg-frontscreen pl-8 lg:pl-32 pt-6 lg:pt-8 lg:grid-cols-[minmax(0,1fr)_minmax(600px,1fr)]"
       >
         <div className="text-4xl font-extrabold text-white md:text-6xl lg:text-8xl">
           Autonomous <br /> Logistics
@@ -45,7 +45,7 @@ function LandingScreen(props: Props) {
           <a className="no-underline hover:underline" href="/de">DE</a> | <a className="no-underline hover:underline" href="/en">EN</a>
         </div>
         <div className="justify-self-center md:row-span-3 lg:col-start-2 lg:justify-self-start">
-          <Image src={props.amr_url} alt="Ein Bild vom Husky" width={600} height={400} placeholder="empty" priority />
+          <Image src={props.amr_url} alt="Ein Bild vom Husky" width={600} height={400} quality={75} placeholder="empty" priority />
         </div>
         <div className="text-sm font-extralight md:text-base lg:self-end">
           <ul className="grid gap-3">

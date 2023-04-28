@@ -45,7 +45,7 @@ function AmrPage(props: Props) {
         >
           <BackIcon className="h-10 w-10 text-neutral-600 hover:text-neutral-400 active:text-neutrail-500" />
         </Link>
-        <Image src={props.image} alt={props.name} width={600} height={400} className="lg:row-start-2" />
+        <Image src={props.image} alt={props.name} width={600} height={400} className="lg:row-start-2" priority />
         <div className="lg:row-start-2">
           <MDXRemote {...props.source} components={components} />
         </div>
