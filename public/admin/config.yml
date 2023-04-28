@@ -171,3 +171,69 @@ collections:
             label: AMR Section Subtext
             widget: text
 
+
+      - name: "frontpage"
+        label: "Frontpage Englisch"
+        file: "meta/frontpage.en.yml"
+        description: "Frontpage data"
+        fields:
+          - name: page_description
+            label: Meta Text
+            widget: text
+          - name: bulletpoints
+            label: Bulletpoints
+            label_singular: Bulletpoint
+            widget: list
+            fields:
+              - name: text
+                widget: "string"
+                hint: A frontpage bullet point
+          - name: headline
+            label: Page Headline
+            widget: string
+          - name: introduction_text
+            label: Intro text
+            widget: text
+          - name: trial_kit_url
+            label: Trialkit URL
+            widget: string
+          - name: trial_kit_label
+            label: Trialkit Label
+            widget: string
+          - name: trial_kit_description
+            label: Trialkit Description
+            widget: text
+          - name: contact_url
+            label: Contact URL
+            widget: string
+          - name: contact_label
+            label: Contact Label
+            widget: string
+          - name: contact_description
+            label: Contact Description
+            widget: text
+          - name: video_url
+            label: Video URL
+            widget: file
+          - name: video_title
+            label: Video Title
+            widget: string
+          - name: video_subtext
+            label: Video Subtext
+            widget: text
+          - name: mail_address
+            label: Mail Addresse
+            widget: string
+          - name: mail_subject
+            label: Mail Betreff
+            widget: string
+          - name: mail_body
+            label: Mail Inhalt
+            widget: text
+          - name: amr_headline
+            label: AMR Section Headline
+            widget: string
+          - name: amr_subtext
+            label: AMR Section Subtext
+            widget: text
+
