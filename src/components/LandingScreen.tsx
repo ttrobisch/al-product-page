@@ -42,12 +42,11 @@ function LandingScreen(props: Props) {
         className="box-content grid place-items-center
        justify-items-start gap-4 rounded-xl bg-frontscreen pl-8 lg:pl-32 pt-6 lg:pt-8 lg:grid-cols-[minmax(0,1fr)_minmax(600px,1fr)]"
       >
-        <div className="text-4xl font-extrabold text-white md:text-6xl lg:text-8xl">
+        <h1 className="text-4xl font-extrabold text-white md:text-6xl lg:text-8xl">
           Autonomous <br /> Logistics
-        </div>
-        <div className="text-white text-l absolute top-6 right-7">
-          <a className={`no-underline hover:underline ${currentLang === "de" ? "font-extrabold" : ""}`} href="/de">DE </a>|
-          <a className={`no-underline hover:underline ${currentLang === "en" || currentLang === "" ? "font-extrabold" : ""}`} href="/en"> EN</a>
+        </h1>
+        <div className="font-extrabold text-white text-l absolute top-5 right-6">
+          <a href="/de">DE</a> | <a href="/en">EN</a>
         </div>
         <div className="justify-self-center md:row-span-3 lg:col-start-2 lg:justify-self-start">
           <Image src={props.amr_url} alt="Ein Bild vom Husky" width={600} height={400} quality={75} placeholder="empty" priority />
