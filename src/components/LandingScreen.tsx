@@ -34,7 +34,6 @@ function LandingScreen(props: Props) {
     };
   }, []);
   React.useEffect(() => {
-    console.log(window.location.pathname.split("/")[1]);
     setCurrentLang(window.location.pathname.split("/")[1]);
   }, []);
   return (
