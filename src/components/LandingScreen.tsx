@@ -17,6 +17,7 @@ type Props = {
 
 function LandingScreen(props: Props) {
   const [showScroll, setShowScroll] = React.useState(true);
+  const [currentLang, setCurrentLang] = React.useState("");
 
   React.useEffect(() => {
     const offset = 20;
@@ -32,6 +33,10 @@ function LandingScreen(props: Props) {
       window.removeEventListener("scroll", checkScrollTop);
     };
   }, []);
+  React.useEffect(() => {
+    console.log(window.location.pathname.split("/")[1]);
+    setCurrentLang(window.location.pathname.split("/")[1]);
+  }, []);
   return (
     <>
       <div
@@ -41,8 +46,9 @@ function LandingScreen(props: Props) {
         <div className="text-4xl font-extrabold text-white md:text-6xl lg:text-8xl">
           Autonomous <br /> Logistics
         </div>
-        <div className="font-bold text-white text-l absolute top-6 right-7">
-          <a className="no-underline hover:underline" href="/de">DE</a> | <a className="no-underline hover:underline" href="/en">EN</a>
+        <div className="text-white text-l absolute top-6 right-7">
+          <a className={`no-underline hover:underline ${currentLang === "de" ? "font-extrabold" : ""}`} href="/de">DE </a>|
+          <a className={`no-underline hover:underline ${currentLang === "en" || currentLang === "" ? "font-extrabold" : ""}`} href="/en"> EN</a>
         </div>
         <div className="justify-self-center md:row-span-3 lg:col-start-2 lg:justify-self-start">
           <Image src={props.amr_url} alt="Ein Bild vom Husky" width={600} height={400} quality={75} placeholder="empty" priority />
