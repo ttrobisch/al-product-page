@@ -5,6 +5,7 @@ type Props = {
         max_speed: string;
         weight: string;
         drive_type: string;
+        operation_time: string;
         charging_speed: string;
         payload: string;
       };
@@ -14,6 +15,7 @@ type Props = {
         max_speed_lbl: string;
         weight_lbl: string;
         drive_type_lbl: string;
+        operation_time_lbl: string;
         charging_speed_lbl: string;
         payload_lbl: string;
     };
@@ -32,6 +34,8 @@ function AMRFacts ({ labels, facts }: Props) {
                     <p className={"text-left"}>{facts.weight}</p>
                     <p className="font-bold min-[320px]:text-right">{labels.drive_type_lbl}</p>
                     <p className={"text-left"}>{facts.drive_type}</p>
+                    <p className="font-bold min-[320px]:text-right">{labels.operation_time_lbl}</p>
+                    <p className={"text-left"}>{facts.operation_time}</p>
                     <p className="font-bold min-[320px]:text-right">{labels.charging_speed_lbl}</p>
                     <p className={"text-left"}>{facts.charging_speed}</p>
                     <p className="font-bold min-[320px]:text-right">{labels.payload_lbl}</p>

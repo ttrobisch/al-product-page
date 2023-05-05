@@ -18,6 +18,7 @@ type Props = {
     max_speed_lbl: string;
     weight_lbl: string;
     drive_type_lbl: string;
+    operation_time_lbl: string;
     charging_speed_lbl: string;
     payload_lbl: string;
   };
@@ -25,6 +26,7 @@ type Props = {
     max_speed: string;
     weight: string;
     drive_type: string;
+    operation_time: string;
     charging_speed: string;
     payload: string;
   };
@@ -127,12 +129,14 @@ export async function getStaticProps({
     max_speed: amrMatterResult.data.max_speed,
     weight: amrMatterResult.data.weight,
     drive_type: amrMatterResult.data.drive_type,
+    operation_time: amrMatterResult.data.operation_time,
     charging_speed: amrMatterResult.data.charging_speed,
     payload: amrMatterResult.data.payload,
   } as  {
     max_speed: string;
     weight: string;
     drive_type: string;
+    operation_time: string;
     charging_speed: string;
     payload: string;
   }
@@ -154,6 +158,7 @@ export async function getStaticProps({
     max_speed_lbl: amrresult.data.max_speed_lbl,
     weight_lbl: amrresult.data.weight_lbl,
     drive_type_lbl: amrresult.data.drive_type_lbl,
+    operation_time_lbl: amrresult.data.operation_time_lbl,
     charging_speed_lbl: amrresult.data.charging_speed_lbl,
     payload_lbl: amrresult.data.payload_lbl,
   } as {
@@ -162,6 +167,7 @@ export async function getStaticProps({
     max_speed_lbl: string;
     weight_lbl: string;
     drive_type_lbl: string;
+    operation_time_lbl: string;
     charging_speed_lbl: string;
     payload_lbl: string;
   };
