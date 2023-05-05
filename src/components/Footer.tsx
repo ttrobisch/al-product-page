@@ -17,12 +17,12 @@ type Props = {
 
 function Footer(props: Props) {
   return <>
-    <div className="relative w-screen bg-[#414D56]  p-12 text-white">
+    <div className="relative w-auto bg-[#414D56]  p-12 text-white">
       <h1 className="mt-16 text-3xl font-black">{props.header}</h1>
-      <div className="mt-2 hover:text-blue-600">
+      <a className="mt-2 hover:text-blue-600" href={props.contact_url}>
         <span className="mr-2 text-base">{props.contact_label}</span>&nbsp;
         <ArrowUp45Icon></ArrowUp45Icon>
-      </div>
+      </a>
       <nav className="mt-16">
         <a className="pr-5 hover:text-blue-600" href={props.data_protection_url}>
             {props.data_protection_label}
@@ -36,10 +36,10 @@ function Footer(props: Props) {
       </nav>
 
       <p className="mt-5">{props.copyright}</p>
-      <div className=" absolute bottom-4 right-28 font-semibold">
+      <a className=" absolute bottom-4 right-28 font-semibold hover:text-blue-600" href="#top">
           {props.goto_top_label}
         <ArrowUpIcon className="ml-3"></ArrowUpIcon>
-      </div>
+      </a>
     </div>
   </>
 }
