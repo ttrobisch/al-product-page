@@ -1,5 +1,4 @@
 import React from "react";
-import "tailwindcss/tailwind.css";
 import { ArrowUp45Icon, ArrowUpIcon } from "./icons";
 
 type Props = {
@@ -17,7 +16,7 @@ type Props = {
 };
 
 function Footer(props: Props) {
-  return (
+  return <>
     <div className="relative w-screen bg-[#414D56]  p-12 text-white">
       <h1 className="mt-16 text-3xl font-black">{props.header}</h1>
       <div className="mt-2 hover:text-blue-600">
@@ -42,7 +41,7 @@ function Footer(props: Props) {
         <ArrowUpIcon className="ml-3"></ArrowUpIcon>
       </div>
     </div>
-  );
+  </>
 }
 
 export { Footer };
