@@ -68,10 +68,13 @@ function AmrPage({ amrdata, amrfacts, amrMatterData, data, source }: Props) {
           <BackIcon className="h-10 w-10 text-neutral-600 hover:text-neutral-400 active:text-neutrail-500" />
         </Link>
         <Image src={amrMatterData.image} alt={amrMatterData.name} width={600} height={400} className="lg:row-start-2" priority />
-        <div className="lg:row-start-2">
+        <div className="lg:row-start-2 ">
           <MDXRemote {...source} components={components} />
+          <div className="m-4">
+            <AMRFacts facts={amrfacts} labels={amrdata} />
+          </div>
         </div>
-        <AMRFacts facts={amrfacts} labels={amrdata} />
+
       </div>
     </div>
   );
@@ -120,7 +123,7 @@ export async function getStaticProps({
     name: string;
     image: string;
   };
-  const amrFacts = {
+  const amrfacts = {
     max_speed: amrMatterResult.data.max_speed,
     weight: amrMatterResult.data.weight,
     drive_type: amrMatterResult.data.drive_type,
@@ -179,10 +182,10 @@ export async function getStaticProps({
   };
   return {
     props: {
-      ...amrdata,
-      ...amrFacts,
-      ...amrMatterData,
-      ...data,
+      amrdata,
+      amrfacts,
+      amrMatterData,
+      data,
       source: mdxSource,
     },
   };
