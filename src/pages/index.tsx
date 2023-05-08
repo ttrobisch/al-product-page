@@ -129,7 +129,7 @@ export default function Index({data, amrs, videos, footer}: Props) {
                     </div>
                 </div>
             </div>
-            <footer className="m-auto max-w-screen-2xl">
+            <footer className="m-auto">
                 <Footer {...footer}/>
             </footer>
         </>
