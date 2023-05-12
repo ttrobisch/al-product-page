@@ -16,7 +16,14 @@ module.exports = {
       backgroundColor: {
         blue: "rgb(39, 45, 54)",
       },
+      textColor: {
+        magenta: "rgb(232,3,129)",
+      },
+      colors: { magenta: "rgb(232,3,129)" },
     },
+  },
+  variants: {
+    fill: ["responsive", "hover", "focus", "group-hover"],
   },
   plugins: [
     require("@tailwindcss/container-queries"),
