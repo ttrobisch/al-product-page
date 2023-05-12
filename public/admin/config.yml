@@ -23,22 +23,22 @@ collections:
       - name: image
         label: Bild
         widget: image
-      - name: Maximum Speed
+      - name: max_speed
         label: max Speed with unit
         widget: string
-      - name: Weight
+      - name: weight
         label: weight with unit
         widget: string
-      - name: Drive Type
+      - name: drive_type
         label: Drive Type/ Antriebsart
         widget: string
-      - name: Operation Time
+      - name: operation_time
         label: Operation Time with unit
         widget: string
-      - name: Charging Time
+      - name: charging_speed
         label: Charging Time with unit
         widget: string
-      - name: Payload
+      - name: payload
         label: Payload with unit
         widget: string
 
@@ -59,22 +59,22 @@ collections:
       - name: image
         label: Bild
         widget: image
-      - name: Maximum Speed
+      - name: max_speed
         label: max Speed with unit
         widget: string
-      - name: Weight
+      - name: weight
         label: weight with unit
         widget: string
-      - name: Drive Type
+      - name: drive_type
         label: Drive Type/ Antriebsart
         widget: string
-      - name: Operation Time
+      - name: operation_time
         label: Operation Time with unit
         widget: string
-      - name: Charging Time
-        label: Charging Time with unit
+      - name: charging_speed
+        label: Charging Speed with unit
         widget: string
-      - name: Payload
+      - name: payload
         label: Payload with unit
         widget: string
   
