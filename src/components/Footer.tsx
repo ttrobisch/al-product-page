@@ -25,7 +25,7 @@ function Footer(props: Props) {
 
   return (
     <>
-      <div className="relative w-auto bg-[#414D56]  p-12 text-white">
+      <div className="relative w-auto bg-darkblue  p-12 text-white">
         <h1 className=" text-xl font-black sm:mt-8 sm:text-3xl">{props.header}</h1>
         <a className="mt-2 hover:text-magenta" href={props.contact_url}>
           <span className="mr-2 text-base">{props.contact_label}</span>&nbsp;
