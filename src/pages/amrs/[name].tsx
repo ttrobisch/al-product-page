@@ -2,14 +2,20 @@ import BackIcon from "@heroicons/react/20/solid/ArrowLeftCircleIcon";
 import { readFileSync, readdirSync } from "fs";
 import matter from "gray-matter";
 import yaml from "js-yaml";
-import { GetStaticPathsContext, GetStaticPathsResult, GetStaticPropsContext, GetStaticPropsResult } from "next";
+import {
+  GetStaticPathsContext,
+  GetStaticPathsResult,
+  GetStaticPropsContext,
+  GetStaticPropsResult,
+} from "next";
 import { MDXRemote, MDXRemoteSerializeResult } from "next-mdx-remote";
 import { serialize } from "next-mdx-remote/serialize";
 import Image from "next/image";
 import Head from "next/head";
 import Link from "next/link";
 import { join } from "path";
-import {AMRFacts} from "../../components/AMRFacts";
+import { AMRFacts } from "../../components/AMRFacts";
+import { AMRDetailimage } from "../../components/AMRDetailimage";
 
 type Props = {
   amrdata: {
@@ -33,7 +39,16 @@ type Props = {
   amrMatterData: {
     name: string;
     image: string;
-  }
+    details: {
+      pathX: number;
+      pathY: number;
+      pathOffset: number;
+      textX: number;
+      textY: number;
+      textSize: number;
+      text: string[];
+    }[];
+  };
   data: {
     page_title: string;
     page_description: string;
@@ -43,13 +58,9 @@ type Props = {
 };
 
 const components = {
-  h1: (props: JSX.IntrinsicElements["h1"]) => (
-    <h1 {...props} className="text-3xl pb-4" />
+  p: (props: JSX.IntrinsicElements["p"]) => (
+    <p {...props} className="pb-4 pl-8" />
   ),
-  h2: (props: JSX.IntrinsicElements["h1"]) => (
-    <h2 {...props} className="text-sm pb-4" />
-  ),
-  p: (props: JSX.IntrinsicElements["p"]) => <p {...props} className="pb-4" />,
   a: (props: JSX.IntrinsicElements["a"]) => (
     <a {...props} className="bg-blue-500 rounded px-3 py-2" />
   ),
@@ -57,36 +68,54 @@ const components = {
 
 function AmrPage({ amrdata, amrfacts, amrMatterData, data, source }: Props) {
   return (
-    <div className="p-[5%] min-h-screen grid items-center">
-      <Head>
-        <title>{data.page_title}</title>
-        <meta name="description" content={data.page_description} />
-      </Head>
-      <div className="max-w-7xl mx-auto bg-white rounded border min-h-[50vh] border-black border-opacity-5 shadow-sm px-5 py-4 grid grid-rows-[auto_1fr] lg:grid-cols-2 place-items-center">
-        <Link
-          className="place-self-start"
-          href={"/#" + amrMatterData.name.toLowerCase()}
-        >
-          <BackIcon className="h-10 w-10 text-neutral-600 hover:text-neutral-400 active:text-neutrail-500" />
-        </Link>
-        <Image src={amrMatterData.image} alt={amrMatterData.name} width={600} height={400} className="lg:row-start-2" priority />
-        <div className="lg:row-start-2 ">
-          <MDXRemote {...source} components={components} />
-          <div className="m-4">
-            <AMRFacts facts={amrfacts} labels={amrdata} />
+    <>
+      <div className="grid min-h-screen items-center p-[5%]">
+        <Head>
+          <title>{data.page_title}</title>
+          <meta name="description" content={data.page_description} />
+        </Head>
+        <div className="mx-auto grid min-h-[50vh] max-w-7xl grid-rows-[auto_1fr] place-items-center rounded border border-black border-opacity-5 bg-white px-5 py-4  shadow-sm">
+          <Link
+            className="place-self-start"
+            href={"/#" + amrMatterData.name.toLowerCase()}
+          >
+            <BackIcon className="active:text-neutrail-500 h-10 w-10 text-neutral-600 hover:text-neutral-400" />
+          </Link>
+          <AMRDetailimage details={amrMatterData.details} />
+          {/*<AMRDetailimage*/}
+          {/*  details={[*/}
+          {/*    {*/}
+          {/*      pathX: 50,*/}
+          {/*      pathY: 10,*/}
+          {/*      pathOffset: 10,*/}
+          {/*      textX: 62,*/}
+          {/*      textY: 10.5,*/}
+          {/*      textSize: 1.8,*/}
+          {/*      text: ["Ein", "toller", "Arm"],*/}
+          {/*    },*/}
+          {/*  ]}*/}
+          {/*/>*/}
+          {/*<Image src={amrMatterData.image} alt={amrMatterData.name} width={600} height={400} className="lg:row-start-2" priority />*/}
+          <div className=" ">
+            <div className="m-4 grid grid-cols-1 space-x-4 divide-x-2 divide-black ">
+              <MDXRemote {...source} components={components} />
+            </div>
+            <div className="m-4">
+              <AMRFacts facts={amrfacts} labels={amrdata} />
+            </div>
           </div>
         </div>
-
       </div>
-    </div>
+    </>
   );
 }
 
 export default AmrPage;
 
-export function getStaticPaths(context: GetStaticPathsContext): GetStaticPathsResult {
-
-  const paths = context.locales.map(locale => {
+export function getStaticPaths(
+  context: GetStaticPathsContext
+): GetStaticPathsResult {
+  const paths = context.locales.map((locale) => {
     const path = process.cwd() + "/_content/amrs_" + locale;
     const files = readdirSync(path).filter((file) => file.endsWith(".mdx"));
 
@@ -96,7 +125,7 @@ export function getStaticPaths(context: GetStaticPathsContext): GetStaticPathsRe
       },
       locale: locale,
     }));
-  })
+  });
   return {
     paths: paths.flat(),
     fallback: false,
@@ -114,17 +143,15 @@ export async function getStaticProps({
   const amrFileContent = readFileSync(amrFile, "utf-8");
   const amrMatterResult = matter(amrFileContent, {
     engines: {
-      yaml: (s) => yaml.load(s, {schema: yaml.JSON_SCHEMA}) as object,
+      yaml: (s) => yaml.load(s, { schema: yaml.JSON_SCHEMA }) as object,
     },
   });
 
   const amrMatterData = {
     name: amrMatterResult.data.name,
     image: amrMatterResult.data.image,
-  }as {
-    name: string;
-    image: string;
-  };
+    details: amrMatterResult.data.details,
+  } as Props["amrMatterData"];
   const amrfacts = {
     max_speed: amrMatterResult.data.max_speed,
     weight: amrMatterResult.data.weight,
@@ -132,14 +159,7 @@ export async function getStaticProps({
     operation_time: amrMatterResult.data.operation_time,
     charging_speed: amrMatterResult.data.charging_speed,
     payload: amrMatterResult.data.payload,
-  } as  {
-    max_speed: string;
-    weight: string;
-    drive_type: string;
-    operation_time: string;
-    charging_speed: string;
-    payload: string;
-  }
+  } as Props["amrfacts"];
 
   const mdxSource = await serialize(amrFileContent, {
     parseFrontmatter: true,
@@ -172,7 +192,10 @@ export async function getStaticProps({
     payload_lbl: string;
   };
 
-  const frontpage_path = join(process.cwd(), "meta/frontpage." + locale + ".yml");
+  const frontpage_path = join(
+    process.cwd(),
+    "meta/frontpage." + locale + ".yml"
+  );
   const frontpage_data = readFileSync(frontpage_path, "utf-8");
   const result = matter(frontpage_data, {
     engines: {
