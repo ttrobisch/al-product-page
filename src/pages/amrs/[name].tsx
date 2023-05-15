@@ -121,7 +121,7 @@ function AmrPage({
             </div>
           </div>
         </div>
-        <div className="mx-auto grid w-full place-items-center rounded-t border-x border-t border-black  border-opacity-5 bg-white">
+        <div className="mx-auto grid w-full rounded-t border-x border-t border-black  border-opacity-5 bg-white">
           <div className="my-8 grid md:my-16">
             <AMRFacts facts={amrfacts} labels={amrdata} />
           </div>
