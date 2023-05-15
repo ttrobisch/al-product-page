@@ -114,7 +114,7 @@ function AmrPage({
           />
         </div>
         <div className="mx-auto grid w-auto place-items-center bg-gray-100 ">
-          <div className="w- my-4 overflow-visible bg-gray-100 px-0 md:my-8">
+          <div className="my-4 bg-gray-100 px-0 md:my-8 mr-5">
             <div className="grid grid-cols-1 space-x-4 divide-x-2 divide-black md:m-4">
               <div />
               <MDXRemote {...source} components={components} />

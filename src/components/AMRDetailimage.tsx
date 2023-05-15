@@ -3,13 +3,6 @@ import Image from "next/image";
 import { useState } from "react";
 import { useRef } from "react";
 
-type amrProps = {
-  image: string;
-  internal_name: string;
-  external_name: string;
-  fabricator: string;
-};
-
 type FloatingTextProps = {
   pathX: number;
   pathY: number;
