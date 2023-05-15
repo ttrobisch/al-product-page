@@ -23,6 +23,24 @@ collections:
       - name: image
         label: Bild
         widget: image
+      - name: max_speed
+        label: max Speed with unit
+        widget: string
+      - name: weight
+        label: weight with unit
+        widget: string
+      - name: drive_type
+        label: Drive Type/ Antriebsart
+        widget: string
+      - name: operation_time
+        label: Operation Time with unit
+        widget: string
+      - name: charging_speed
+        label: Charging Time with unit
+        widget: string
+      - name: payload
+        label: Payload with unit
+        widget: string
 
   - name: amrs english
     label: AMRs Englisch
@@ -41,6 +59,24 @@ collections:
       - name: image
         label: Bild
         widget: image
+      - name: max_speed
+        label: max Speed with unit
+        widget: string
+      - name: weight
+        label: weight with unit
+        widget: string
+      - name: drive_type
+        label: Drive Type/ Antriebsart
+        widget: string
+      - name: operation_time
+        label: Operation Time with unit
+        widget: string
+      - name: charging_speed
+        label: Charging Speed with unit
+        widget: string
+      - name: payload
+        label: Payload with unit
+        widget: string
   
   - name: videos german
     label: Videos Deutsch
@@ -144,7 +180,7 @@ collections:
       preview: true
     files:
       - name: "frontpage_de"
-        label: "Frontpage"
+        label: "Frontpage Deutsch"
         file: "meta/frontpage.de.yml"
         description: "Frontpage data de"
         fields:
@@ -274,3 +310,140 @@ collections:
             label: AMR Section Subtext
             widget: text
 
+      - name: "amr_page_de"
+        label: "AMR Page Deutsch"
+        file: "meta/amrpage.de.yml"
+        description: "AMR page Labels de"
+        fields:
+          - name: headline_facts
+            label: Headline for Facts
+            widget: string
+          - name: headline_usage
+            label: Headline for Usage
+            widget: string
+          - name: max_speed_lbl
+            label: Label for max Speed
+            widget: string
+          - name: weight_lbl
+            label: Label for AMR weight
+            widget: string
+          - name: drive_type_lbl
+            label: Label for drive Type
+            widget: string
+          - name: operation_time_lbl
+            label: Label for Operation Time
+            widget: string
+          - name: charging_speed_lbl
+            label: Label for charging Speed
+            widget: string
+          - name: payload_lbl
+            label: Label for Payload
+            widget: string
+
+      - name: "amr_page_en"
+        label: "AMR Page English"
+        file: "meta/amrpage.en.yml"
+        description: "AMR page Labels en"
+        fields:
+          - name: headline_facts
+            label: Headline for Facts
+            widget: string
+          - name: headline_usage
+            label: Headline for Usage
+            widget: string
+          - name: max_speed_lbl
+            label: Label for max Speed
+            widget: string
+          - name: weight_lbl
+            label: Label for AMR weight
+            widget: string
+          - name: drive_type_lbl
+            label: Label for drive Type
+            widget: string
+          - name: operation_time_lbl
+            label: Label for Operation Time
+            widget: string
+          - name: charging_speed_lbl
+            label: Label for charging Speed
+            widget: string
+          - name: payload_lbl
+            label: Label for Payload
+            widget: string
+
+      - name: "footer_de"
+        label: "Footer Deutsch"
+        file: "meta/footer.de.yml"
+        description: "Footer de"
+        fields:
+          - name: header
+            label: Header
+            widget: string
+          - name: contact_label
+            label: Contact Label
+            widget: string
+          - name: contact_url
+            label: Contact URL
+            widget: string
+          - name: data_protection_label
+            label: Data Protection Label
+            widget: string
+          - name: data_protection_url
+            label: Data Protection URL
+            widget: string
+          - name: legal_notice_label
+            label: Legal Notice Label
+            widget: string
+          - name: legal_notice_url
+            label: Legal Notice URL
+            widget: string
+          - name: faq_label
+            label: FAQ Label
+            widget: string
+          - name: faq_url
+            label: FAQ URL
+            widget: string
+          - name: copyright
+            label: Copy Right
+            widget: string
+          - name: goto_top_url
+            label: Goto Top URL
+            widget: string
+
+      - name: "footer_en"
+        label: "Footer English"
+        file: "meta/footer.en.yml"
+        description: "Footer en"
+        fields:
+          - name: header
+            label: Header
+            widget: string
+          - name: contact_label
+            label: Contact Label
+            widget: string
+          - name: contact_url
+            label: Contact URL
+            widget: string
+          - name: data_protection_label
+            label: Data Protection Label
+            widget: string
+          - name: data_protection_url
+            label: Data Protection URL
+            widget: string
+          - name: legal_notice_label
+            label: Legal Notice Label
+            widget: string
+          - name: legal_notice_url
+            label: Legal Notice URL
+            widget: string
+          - name: faq_label
+            label: FAQ Label
+            widget: string
+          - name: faq_url
+            label: FAQ URL
+            widget: string
+          - name: copyright
+            label: Copy Right
+            widget: string
+          - name: goto_top_url
+            label: Goto Top URL
+            widget: string
