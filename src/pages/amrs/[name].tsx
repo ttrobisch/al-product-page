@@ -10,7 +10,6 @@ import {
 } from "next";
 import { MDXRemote, MDXRemoteSerializeResult } from "next-mdx-remote";
 import { serialize } from "next-mdx-remote/serialize";
-import Image from "next/image";
 import Head from "next/head";
 import Link from "next/link";
 import { join } from "path";
@@ -69,7 +68,7 @@ const components = {
 function AmrPage({ amrdata, amrfacts, amrMatterData, data, source }: Props) {
   return (
     <>
-      <div className="grid min-h-screen items-center p-[5%]">
+      <div className="grid min-h-screen items-center">
         <Head>
           <title>{data.page_title}</title>
           <meta name="description" content={data.page_description} />
@@ -82,7 +81,7 @@ function AmrPage({ amrdata, amrfacts, amrMatterData, data, source }: Props) {
             <BackIcon className="active:text-neutrail-500 h-10 w-10 text-neutral-600 hover:text-neutral-400" />
           </Link>
           <AMRDetailimage details={amrMatterData.details} />
-          <div className=" my-4 bg-gray-100 md:my-8">
+          <div className="my-4 bg-gray-100 md:my-8 w- px-0 overflow-visible">
             <div className="grid grid-cols-1 space-x-4 divide-x-2 divide-black md:m-4">
               <div />
               <MDXRemote {...source} components={components} />
