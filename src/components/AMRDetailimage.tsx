@@ -1,5 +1,7 @@
 import React from "react";
 import Image from "next/image";
+import { useState } from "react";
+import { useRef } from "react";
 
 type Props = {
   facts: {
@@ -148,10 +150,15 @@ function FloatingText(props: FloatingTextProps) {
 }
 
 function AMRDetailimage(props: { details?: FloatingTextProps[] }) {
+  const [imageLoaded, setImageLoaded] = useState(false);
+  const imageRef = useRef(null);
+
   return (
     <div className="grid items-center">
       <div className="grid [&>*]:col-start-1 [&>*]:col-end-2 [&>*]:row-start-1 [&>*]:row-end-2">
         <Image
+          id={"amrImage"}
+          onLoad={() => setImageLoaded(true)}
           src="/images/amr_spot.webp"
           alt="Ein Bild vom Spot"
           width={1000}
@@ -159,24 +166,29 @@ function AMRDetailimage(props: { details?: FloatingTextProps[] }) {
           quality={100}
           placeholder="empty"
           priority
+          ref={imageRef}
         />
-        <svg
-          className={"text-neutral-400"}
-          width={"100%"}
-          height={"100%"}
-          viewBox={"0 0 100 100"}
-        >
-          {props.details?.map((detail, index) => (
-            <FloatingText key={index} {...detail} />
-          ))}
-        </svg>
+        {imageLoaded && (
+          <svg
+            className={"text-neutral-400"}
+            width={"100%"}
+            height={imageRef.current ? imageRef.current.clientHeight : 500}
+            viewBox={"0 0 100 100"}
+          >
+            {props.details?.map((detail, index) => (
+              <FloatingText key={index} {...detail} />
+            ))}
+          </svg>
+        )}
       </div>
-      <h1 className="mt-8 text-center text-2xl font-bold uppercase text-black md:mt-16 md:text-4xl">
-        knecht ruprecht
-      </h1>
-      <h2 className="mb-8 mt-1 text-center text-xl text-black md:mb-16 md:mt-2 md:text-2xl ">
-        Spot - Boston Dynamics
-      </h2>
+      <div className="mt-8 md:mt-16 mb-4 md:mb-8">
+        <h1 className="text-center text-2xl font-bold uppercase text-black md:text-4xl">
+          knecht ruprecht
+        </h1>
+        <h2 className="mt-1 text-center text-xl text-black md:mt-2 md:text-2xl ">
+          Spot - Boston Dynamics
+        </h2>
+      </div>
     </div>
   );
 }

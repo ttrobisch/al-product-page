@@ -82,27 +82,14 @@ function AmrPage({ amrdata, amrfacts, amrMatterData, data, source }: Props) {
             <BackIcon className="active:text-neutrail-500 h-10 w-10 text-neutral-600 hover:text-neutral-400" />
           </Link>
           <AMRDetailimage details={amrMatterData.details} />
-          {/*<AMRDetailimage*/}
-          {/*  details={[*/}
-          {/*    {*/}
-          {/*      pathX: 50,*/}
-          {/*      pathY: 10,*/}
-          {/*      pathOffset: 10,*/}
-          {/*      textX: 62,*/}
-          {/*      textY: 10.5,*/}
-          {/*      textSize: 1.8,*/}
-          {/*      text: ["Ein", "toller", "Arm"],*/}
-          {/*    },*/}
-          {/*  ]}*/}
-          {/*/>*/}
-          {/*<Image src={amrMatterData.image} alt={amrMatterData.name} width={600} height={400} className="lg:row-start-2" priority />*/}
-          <div className=" ">
-            <div className="m-4 grid grid-cols-1 space-x-4 divide-x-2 divide-black ">
+          <div className=" my-4 bg-gray-100 md:my-8">
+            <div className="grid grid-cols-1 space-x-4 divide-x-2 divide-black md:m-4">
+              <div />
               <MDXRemote {...source} components={components} />
             </div>
-            <div className="m-4">
-              <AMRFacts facts={amrfacts} labels={amrdata} />
-            </div>
+          </div>
+          <div className="m-4 my-4 grid md:my-8">
+            <AMRFacts facts={amrfacts} labels={amrdata} />
           </div>
         </div>
       </div>
