@@ -15,6 +15,8 @@ import Link from "next/link";
 import { join } from "path";
 import { AMRFacts } from "../../components/AMRFacts";
 import { AMRDetailimage } from "../../components/AMRDetailimage";
+import { Footer } from "../../components/Footer";
+import React from "react";
 
 type Props = {
   amrdata: {
@@ -52,6 +54,19 @@ type Props = {
     page_title: string;
     page_description: string;
   };
+  footer: {
+    header: string;
+    contact_label: string;
+    contact_url: string;
+    data_protection_label: string;
+    data_protection_url: string;
+    legal_notice_label: string;
+    legal_notice_url: string;
+    faq_label: string;
+    faq_url: string;
+    copyright: string;
+    goto_top_label: string;
+  };
 
   source: MDXRemoteSerializeResult;
 };
@@ -65,15 +80,22 @@ const components = {
   ),
 };
 
-function AmrPage({ amrdata, amrfacts, amrMatterData, data, source }: Props) {
+function AmrPage({
+  amrdata,
+  amrfacts,
+  amrMatterData,
+  data,
+  footer,
+  source,
+}: Props) {
   return (
     <>
-      <div className="grid min-h-screen items-center">
+      <div className="grid bg-gray-100 2xl:p-[5vw]">
         <Head>
           <title>{data.page_title}</title>
           <meta name="description" content={data.page_description} />
         </Head>
-        <div className="mx-auto grid min-h-[50vh] max-w-7xl grid-rows-[auto_1fr] place-items-center rounded border border-black border-opacity-5 bg-white px-5 py-4  shadow-sm">
+        <div className="mx-auto grid w-full grid-rows-[auto_1fr] place-items-center rounded border border-black  border-opacity-5 bg-white px-5 py-4  shadow-sm">
           <Link
             className="place-self-start"
             href={"/#" + amrMatterData.name.toLowerCase()}
@@ -81,16 +103,23 @@ function AmrPage({ amrdata, amrfacts, amrMatterData, data, source }: Props) {
             <BackIcon className="active:text-neutrail-500 h-10 w-10 text-neutral-600 hover:text-neutral-400" />
           </Link>
           <AMRDetailimage details={amrMatterData.details} />
-          <div className="my-4 bg-gray-100 md:my-8 w- px-0 overflow-visible">
+        </div>
+        <div className="mx-auto grid w-auto place-items-center bg-gray-100 ">
+          <div className="w- my-4 overflow-visible bg-gray-100 px-0 md:my-8">
             <div className="grid grid-cols-1 space-x-4 divide-x-2 divide-black md:m-4">
               <div />
               <MDXRemote {...source} components={components} />
             </div>
           </div>
+        </div>
+        <div className="mx-auto grid w-full place-items-center rounded-t border-t border-x border-black  border-opacity-5 bg-white">
           <div className="m-4 my-4 grid md:my-8">
             <AMRFacts facts={amrfacts} labels={amrdata} />
           </div>
         </div>
+        <footer className="w-full rounded-b border-b border-x border-black border-opacity-5">
+          <Footer {...footer} />
+        </footer>
       </div>
     </>
   );
@@ -191,16 +220,40 @@ export async function getStaticProps({
   const data = {
     page_title: result.data.page_title,
     page_description: result.data.page_description,
+    mail_address: result.data.mail_address,
+    mail_subject: result.data.mail_subject,
+    mail_body: result.data.mail_body,
   } as {
     page_title: string;
     page_description: string;
+    mail_address: string;
+    mail_subject: string;
+    mail_body: string;
   };
+
+  const footer_path = join(process.cwd(), "meta/footer." + locale + ".yml");
+  const footerContent = readFileSync(footer_path, "utf-8");
+  const footerresult = matter(footerContent, {
+    engines: {
+      yaml: (s) => yaml.load(s, { schema: yaml.JSON_SCHEMA }) as object,
+    },
+  });
+  const footer = footerresult.data as Props["footer"];
+  footer.contact_url =
+    "mailto:" +
+    data.mail_address +
+    "?subject=" +
+    data.mail_subject +
+    "&body=" +
+    data.mail_body;
+
   return {
     props: {
       amrdata,
       amrfacts,
       amrMatterData,
       data,
+      footer,
       source: mdxSource,
     },
   };
