@@ -40,6 +40,9 @@ type Props = {
   amrMatterData: {
     name: string;
     image: string;
+    internal_name: string;
+    external_name: string;
+    fabricator: string;
     details: {
       pathX: number;
       pathY: number;
@@ -102,7 +105,13 @@ function AmrPage({
           >
             <BackIcon className="active:text-neutrail-500 h-10 w-10 text-neutral-600 hover:text-neutral-400" />
           </Link>
-          <AMRDetailimage details={amrMatterData.details} />
+          <AMRDetailimage
+            image={amrMatterData.image}
+            internal_name={amrMatterData.internal_name}
+            external_name={amrMatterData.external_name}
+            fabricator={amrMatterData.fabricator}
+            details={amrMatterData.details}
+          />
         </div>
         <div className="mx-auto grid w-auto place-items-center bg-gray-100 ">
           <div className="w- my-4 overflow-visible bg-gray-100 px-0 md:my-8">
@@ -112,12 +121,12 @@ function AmrPage({
             </div>
           </div>
         </div>
-        <div className="mx-auto grid w-full place-items-center rounded-t border-t border-x border-black  border-opacity-5 bg-white">
+        <div className="mx-auto grid w-full place-items-center rounded-t border-x border-t border-black  border-opacity-5 bg-white">
           <div className="m-4 my-4 grid md:my-8">
             <AMRFacts facts={amrfacts} labels={amrdata} />
           </div>
         </div>
-        <footer className="w-full rounded-b border-b border-x border-black border-opacity-5">
+        <footer className="w-full rounded-b border-x border-b border-black border-opacity-5">
           <Footer {...footer} />
         </footer>
       </div>
@@ -165,6 +174,9 @@ export async function getStaticProps({
   const amrMatterData = {
     name: amrMatterResult.data.name,
     image: amrMatterResult.data.image,
+    internal_name: amrMatterResult.data.internal_name,
+    external_name: amrMatterResult.data.external_name,
+    fabricator: amrMatterResult.data.fabricator,
     details: amrMatterResult.data.details,
   } as Props["amrMatterData"];
   const amrfacts = {

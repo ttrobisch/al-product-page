@@ -3,25 +3,11 @@ import Image from "next/image";
 import { useState } from "react";
 import { useRef } from "react";
 
-type Props = {
-  facts: {
-    max_speed: string;
-    weight: string;
-    drive_type: string;
-    operation_time: string;
-    charging_speed: string;
-    payload: string;
-  };
-  labels: {
-    headline_facts: string;
-    headline_usage: string;
-    max_speed_lbl: string;
-    weight_lbl: string;
-    drive_type_lbl: string;
-    operation_time_lbl: string;
-    charging_speed_lbl: string;
-    payload_lbl: string;
-  };
+type amrProps = {
+  image: string;
+  internal_name: string;
+  external_name: string;
+  fabricator: string;
 };
 
 type FloatingTextProps = {
@@ -149,7 +135,13 @@ function FloatingText(props: FloatingTextProps) {
   );
 }
 
-function AMRDetailimage(props: { details?: FloatingTextProps[] }) {
+function AMRDetailimage(props: {
+  image: string;
+  internal_name: string;
+  external_name: string;
+  fabricator: string;
+  details?: FloatingTextProps[];
+}) {
   const [imageLoaded, setImageLoaded] = useState(false);
   const imageRef = useRef(null);
 
@@ -159,7 +151,7 @@ function AMRDetailimage(props: { details?: FloatingTextProps[] }) {
         <Image
           id={"amrImage"}
           onLoad={() => setImageLoaded(true)}
-          src="/images/amr_spot.webp"
+          src={props.image}
           alt="Ein Bild vom Spot"
           width={1000}
           height={500}
@@ -181,12 +173,12 @@ function AMRDetailimage(props: { details?: FloatingTextProps[] }) {
           </svg>
         )}
       </div>
-      <div className="mt-8 md:mt-16 mb-4 md:mb-8">
+      <div className="mb-4 mt-8 md:mb-8 md:mt-16">
         <h1 className="text-center text-2xl font-bold uppercase text-black md:text-4xl">
-          knecht ruprecht
+          {props.internal_name}
         </h1>
         <h2 className="mt-1 text-center text-xl text-black md:mt-2 md:text-2xl ">
-          Spot - Boston Dynamics
+          {props.external_name} - {props.fabricator}
         </h2>
       </div>
     </div>
