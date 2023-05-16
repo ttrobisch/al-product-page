@@ -114,7 +114,7 @@ function AmrPage({
           />
         </div>
         <div className="mx-auto grid w-auto place-items-center bg-gray-100 ">
-          <div className="my-8 bg-gray-100 px-0 md:my-12 mr-5">
+          <div className="my-16 md:my-24 mx-8 md:mx-16 bg-gray-100 px-0">
             <div className="grid grid-cols-1 space-x-4 divide-x-2 divide-black md:m-4">
               <div />
               <MDXRemote {...source} components={components} />
@@ -122,7 +122,7 @@ function AmrPage({
           </div>
         </div>
         <div className="mx-auto grid w-full rounded-t border-x border-t border-black  border-opacity-5 bg-white">
-          <div className="my-8 grid md:my-16">
+          <div className="my-16 md:my-24 grid">
             <AMRFacts facts={amrfacts} labels={amrdata} />
           </div>
         </div>
