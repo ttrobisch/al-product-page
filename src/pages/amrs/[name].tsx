@@ -123,10 +123,6 @@ export default AmrPage;
 
 export function getStaticPaths(context: GetStaticPathsContext): GetStaticPathsResult {
   const paths = context.locales.map((locale) => {
-export function getStaticPaths(
-  context: GetStaticPathsContext
-): GetStaticPathsResult {
-  const paths = context.locales.map((locale) => {
     const path = process.cwd() + "/_content/amrs_" + locale;
     const files = readdirSync(path).filter((file) => file.endsWith(".mdx"));
 
@@ -136,7 +132,6 @@ export function getStaticPaths(
       },
       locale: locale,
     }));
-  });
   });
   return {
     paths: paths.flat(),
@@ -151,22 +146,18 @@ export async function getStaticProps({ params: { name }, locale }: GetStaticProp
   const amrMatterResult = matter(amrFileContent, {
     engines: {
       yaml: (s) => yaml.load(s, { schema: yaml.JSON_SCHEMA }) as object,
-      yaml: (s) => yaml.load(s, { schema: yaml.JSON_SCHEMA }) as object,
     },
   });
 
   const amrMatterData = {
     name: amrMatterResult.data.name,
     image: amrMatterResult.data.image,
-  } as {
-    name: string;
-    image: string;
-  };
     internal_name: amrMatterResult.data.internal_name,
     external_name: amrMatterResult.data.external_name,
     fabricator: amrMatterResult.data.fabricator,
     details: amrMatterResult.data.details,
   } as Props["amrMatterData"];
+
   const amrfacts = {
     max_speed: amrMatterResult.data.max_speed,
     weight: amrMatterResult.data.weight,
