@@ -171,7 +171,7 @@ function AMRDetailimage(props: {
           {props.internal_name}
         </h1>
         <h2 className="mt-1 text-center text-xl text-black md:mt-2 md:text-2xl ">
-          {props.external_name} - {props.fabricator}
+            {props.external_name} {props.external_name && props.fabricator ? '-' : ''} {props.fabricator}
         </h2>
       </div>
     </div>
