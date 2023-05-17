@@ -54,7 +54,7 @@ function LandingScreen(props: Props) {
           </a>{" "}
         </div>
         <div className="justify-self-center  md:row-span-3 lg:col-start-2 lg:justify-self-start">
-          <Image className=" translate-x-[2.5rem] sm:translate-x-[5.5rem] " src={props.amr_url} alt="Ein Bild vom Husky" width={700} height={400} quality={75} placeholder="empty" priority />
+          <Image src={props.amr_url} alt="Ein Bild vom Husky" width={700} height={400} quality={75} placeholder="empty" priority />
         </div>
         <div className="text-sm font-extralight md:text-base lg:self-end">
           <ul className="grid gap-3">
