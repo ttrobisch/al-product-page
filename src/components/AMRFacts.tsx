@@ -24,13 +24,13 @@ type Props = {
 function AMRFacts({ labels, facts }: Props) {
   return (
     <>
-      <div className="ml-4 grid grid-cols-1 md:gap-12 xl:relative xl:ml-10 xl:grid-cols-[auto_1fr]">
+      <div className="ml-4 grid grid-cols-1 md:gap-12  xl:ml-10 ">
         <div className="grid justify-items-start px-4 md:ml-10 xl:absolute">
           <h2 className="vertical-text mb-8 text-5xl font-extrabold uppercase text-gray-200 md:mb-0 md:text-center md:text-8xl">facts</h2>
         </div>
 
-        <div className="grid w-full justify-self-center px-4  text-base md:justify-items-center md:text-2xl ">
-          <div className="grid gap-x-5 min-[450px]:grid-cols-2 min-[450px]:gap-y-4 md:gap-x-24 ">
+        <div className=" grid w-full px-4  text-base md:justify-items-center md:text-2xl ">
+          <div className="grid gap-x-5 justify-self-center min-[450px]:grid-cols-2 min-[450px]:gap-y-4 md:gap-x-24">
             <p className="font-bold min-[450px]:text-right">{labels.max_speed_lbl}</p>
             <p className={"mb-3 text-left min-[450px]:mb-0"}>{facts.max_speed}</p>
             <p className="font-bold min-[450px]:text-right">{labels.weight_lbl}</p>
