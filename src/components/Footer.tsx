@@ -45,7 +45,7 @@ function Footer(props: Props) {
         </nav>
 
         <p className="mb-8 mt-2  text-sm sm:mb-0">{props.copyright}</p>
-        <a onClick={scrollToTop} className="absolute bottom-4  right-8 text-sm font-semibold hover:text-magenta sm:right-28 ">
+        <a onClick={scrollToTop} className="cursor-default absolute bottom-4  right-8 text-sm font-semibold hover:text-magenta sm:right-28 ">
           {props.goto_top_label}
           <ArrowUpIcon className="ml-3 hover:text-magenta" />
         </a>
