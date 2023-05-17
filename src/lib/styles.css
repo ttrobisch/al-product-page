@@ -3,9 +3,16 @@
 @tailwind utilities;
 
 @media (min-width: 768px) {
-    .vertical-text {
-        writing-mode: vertical-rl;
-        transform: scale(-1);
-        text-orientation: mixed;
-    }
+  .vertical-text {
+    writing-mode: vertical-rl;
+    transform: scale(-1);
+    text-orientation: mixed;
+  }
+}
+@media (min-width: 1024px) {
+  .vertical-text-big {
+    writing-mode: vertical-rl;
+    transform: scale(-1);
+    text-orientation: mixed;
+  }
 }
