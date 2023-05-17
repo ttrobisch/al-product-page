@@ -9,10 +9,18 @@
     text-orientation: mixed;
   }
 }
-@media (min-width: 1024px) {
-  .vertical-text-big {
-    writing-mode: vertical-rl;
-    transform: scale(-1);
-    text-orientation: mixed;
+/* @media (min-width: 1024px) {
+    .vertical-text-big {
+      writing-mode: vertical-rl;
+      transform: scale(-1);
+      text-orientation: mixed;
+    }
   }
-}
+
+  @media (min-width: 1280px) {
+    .vertical-text {
+      writing-mode: vertical-rl;
+      transform: scale(-1);
+      text-orientation: mixed;
+    }
+  } */
