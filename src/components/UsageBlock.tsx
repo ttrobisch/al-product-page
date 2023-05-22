@@ -1,5 +1,4 @@
 import React, { useEffect } from "react";
-// import "../lib/styles.css";
 
 type Props = {
   usage: {
