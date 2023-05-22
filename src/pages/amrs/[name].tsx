@@ -77,6 +77,8 @@ type Props = {
 };
 
 const components = {
+  h1: (props: JSX.IntrinsicElements["h1"]) => <h1 {...props} className="pb-4 text-3xl" />,
+  h2: (props: JSX.IntrinsicElements["h1"]) => <h2 {...props} className="pb-4 text-sm" />,
   p: (props: JSX.IntrinsicElements["p"]) => <p {...props} className="pb-4 pl-8" />,
   a: (props: JSX.IntrinsicElements["a"]) => <a {...props} className="rounded bg-blue-500 px-3 py-2" />,
 };
