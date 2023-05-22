@@ -86,7 +86,7 @@ const components = {
 function AmrPage({ amrdata, amrfacts, amrUsage, amrMatterData, data, footer, source }: Props) {
   return (
     <>
-      <div className="grid bg-gray-100 2xl:p-[5vw]">
+      <div className="grid bg-gray-100">
         <Head>
           <title>{data.page_title}</title>
           <meta name="description" content={data.page_description} />
