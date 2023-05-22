@@ -170,12 +170,7 @@ export async function getStaticProps({ params: { name }, locale }: GetStaticProp
   } as Props["amrfacts"];
   const amrUsage = {
     usage: amrMatterResult.data.usage,
-  } as {
-    usage: {
-      heading: string;
-      description: string;
-    }[];
-  };
+  } as Props["amrUsage"];
 
   const mdxSource = await serialize(amrFileContent, {
     parseFrontmatter: true,
