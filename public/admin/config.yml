@@ -41,6 +41,17 @@ collections:
       - name: payload
         label: Payload with unit
         widget: string
+      - name: usage
+        label: usage
+        label_singular: usage
+        widget: list
+        fields:
+          - name: heading
+            widget: string
+            hint: The heading of the usage
+          - name: description
+            widget: string
+            hint: The heading of the usage
 
   - name: amrs english
     label: AMRs Englisch
@@ -77,7 +88,18 @@ collections:
       - name: payload
         label: Payload with unit
         widget: string
-  
+      - name: usage
+        label: usage
+        label_singular: usage
+        widget: list
+        fields:
+          - name: heading
+            widget: string
+            hint: The heading of the usage
+          - name: description
+            widget: string
+            hint: The description of the usage
+
   - name: videos german
     label: Videos Deutsch
     folder: "_content/videos_de"
@@ -243,7 +265,6 @@ collections:
           - name: amr_subtext
             label: AMR Section Subtext
             widget: text
-
 
       - name: "frontpage_en"
         label: "Frontpage Englisch"
