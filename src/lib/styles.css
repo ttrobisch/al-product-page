@@ -9,11 +9,3 @@
     text-orientation: mixed;
   }
 }
-
-/* @media (min-width: 768px) {
-    .vertical-text {
-        writing-mode: vertical-rl;
-        transform: scale(-1);
-        text-orientation: mixed;
-    }
-} */
