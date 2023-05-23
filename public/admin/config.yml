@@ -17,6 +17,15 @@ collections:
       - name: name
         label: Name
         widget: string
+      - name: internal_name
+        label: Interner (Simpsons) Name
+        widget: string
+      - name: external_name
+        label: externer Name (Modellname des Herstellers)
+        widget: string
+      - name: fabricator
+        label: Hersteller
+        widget: string
       - name: body
         label: Inhalt
         widget: markdown
@@ -52,6 +61,29 @@ collections:
           - name: description
             widget: string
             hint: The heading of the usage
+      - name: details
+        label: Detailpunkte für Bild-Overlay
+        label_singular: detail
+        widget: list
+        fields:
+          - name: pathX
+            widget: string
+            hint: X-Koordinate des Pfades
+          - name: pathY
+            widget: string
+            hint: Y-Koordinate des Pfades
+          - name: pathOffset
+            widget: string
+            hint: Länge des Pfades (negativ wenn nach links laufen soll)
+          - name: textX
+            widget: string
+            hint: X-Koordinate des Textes
+          - name: textY
+            widget: string
+            hint: Y-Koordinate des Textes
+          - name: textSize
+            widget: string
+            hint: Schriftgröße
 
   - name: amrs english
     label: AMRs Englisch
@@ -63,6 +95,15 @@ collections:
     fields:
       - name: name
         label: Name
+        widget: string
+      - name: internal_name
+        label: Interner (Simpsons) Name
+        widget: string
+      - name: external_name
+        label: externer Name (Modellname des Herstellers)
+        widget: string
+      - name: fabricator
+        label: Hersteller
         widget: string
       - name: body
         label: Inhalt
@@ -83,7 +124,7 @@ collections:
         label: Operation Time with unit
         widget: string
       - name: charging_speed
-        label: Charging Speed with unit
+        label: Charging Time with unit
         widget: string
       - name: payload
         label: Payload with unit
@@ -98,7 +139,30 @@ collections:
             hint: The heading of the usage
           - name: description
             widget: string
-            hint: The description of the usage
+            hint: The heading of the usage
+      - name: details
+        label: Detailpunkte für Bild-Overlay
+        label_singular: detail
+        widget: list
+        fields:
+          - name: pathX
+            widget: string
+            hint: X-Koordinate des Pfades
+          - name: pathY
+            widget: string
+            hint: Y-Koordinate des Pfades
+          - name: pathOffset
+            widget: string
+            hint: Länge des Pfades (negativ wenn nach links laufen soll)
+          - name: textX
+            widget: string
+            hint: X-Koordinate des Textes
+          - name: textY
+            widget: string
+            hint: Y-Koordinate des Textes
+          - name: textSize
+            widget: string
+            hint: Schriftgröße
 
   - name: videos german
     label: Videos Deutsch
