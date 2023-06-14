@@ -1,55 +1,159 @@
 import React, { useState } from "react";
-import LinkIcon from "@heroicons/react/20/solid/LinkIcon";
+import { CrossIcon, BurgerMenu } from "./icons";
+import clsx from "clsx";
+import { useRouter } from "next/router";
+import { AnimatePresence, LayoutGroup, motion } from "framer-motion";
 
-function Header() {
-    const [showSubMenu, setShowSubMenu] = useState(false);
+type Props = {
+  amrs: { name: string; img: string }[];
+  fallbackImg: string;
+  fallbackImgAlt: string;
+  pages: string[];
+  color: string;
+};
 
-    const handleMouseEnter = () => {
-        setShowSubMenu(true);
-    };
+function Header(props: Props) {
+  // const currentLang = useRouter().locale;
+  const currentLang = "de";
 
-    const handleMouseLeave = () => {
-        setShowSubMenu(false);
-    };
+  const [isOpen, setIsOpen] = useState(false);
 
-    return (
-        <>
-            <div className="grid grid-cols-[auto_1fr_auto] m-6 mx-16">
-                <a href="/">
-                    <img className="w-20 h-auto" src="/images/logo_magenta.png" alt="header" />
-                </a>
-                <div className="grid grid-cols-[1fr_auto_auto_1fr] gap-x-4 justify-items-center text-lg text-gray-400 font-bold uppercase">
-                    <div></div>
-                    <a className="hover:text-magenta" href="/">Home</a>
-                    <a
-                        className="hover:text-magenta"
-                        href="/#amrs"
-                        onMouseEnter={handleMouseEnter}
-                        onMouseLeave={handleMouseLeave}
-                    >
-                        Modelle
+  const handleClick = () => {
+    setIsOpen(!isOpen);
+    setShowAMRList(false);
+  };
+
+  const handleAmrClose = () => {
+    setShowAMRList(false);
+  };
+
+  const [showAMRList, setShowAMRList] = useState(false);
+  const [amrIndex, setAMRIndex] = useState(-1);
+  const amr = props.amrs[amrIndex];
+  const amrUrl = amr ? amr.img : props.fallbackImg;
+  const amrAlt = amr ? amr.name : props.fallbackImgAlt;
+
+  return (
+    <LayoutGroup>
+      <motion.div
+        layout
+        className={clsx({
+          "relative grid gap-8 overflow-hidden rounded-b-3xl bg-[#D2D7D9] px-8 py-8 pb-5 transition-all duration-700 ease-in-out lg:gap-20 lg:px-24 lg:py-20": true,
+          "text-color bg-transparent": !isOpen,
+          "flex-grow": isOpen,
+        })}
+        onMouseLeave={handleAmrClose}
+      >
+        <div className="flex flex-wrap justify-between text-[#141D1E]">
+          <a className="text-left text-sm hover:font-semibold" href="">
+            Autonomous Logistics
+          </a>
+          <button className="text-right text-sm" onClick={handleClick}>
+            {isOpen ? (
+              <>
+                <CrossIcon className="mr-2 " />
+                <span className="max-lg:hidden">close</span>
+              </>
+            ) : (
+              <>
+                <BurgerMenu className="mr-2 h-[14px] " />
+                <span className="max-lg:hidden">Menu</span>
+              </>
+            )}
+          </button>
+        </div>
+        <AnimatePresence presenceAffectsLayout>
+          {isOpen && (
+            <motion.div transition={{ duration: 0.4 }} initial={{ opacity: 0, height: 0 }} animate={{ opacity: 1, height: "auto" }} exit={{ opacity: 0, height: 0 }}>
+              <div className="grid grid-cols-[1fr_30%] gap-12 pb-12 lg:pb-24">
+                <div>
+                  <div className="flex flex-col text-3xl lg:flex-row lg:pb-4 lg:text-6xl">
+                    <a className="pr-10 font-extralight hover:font-normal" href="" onMouseEnter={handleAmrClose}>
+                      Home
                     </a>
-                    {showSubMenu && (
-                        <div className="absolute bg-white p-4 shadow rounded mt-2">
-                            <a className="block hover:text-magenta" href="/model-1">Modell 1</a>
-                            <a className="block hover:text-magenta" href="/model-2">Modell 2</a>
-                            <a className="block hover:text-magenta" href="/model-3">Modell 3</a>
-                        </div>
+                    <a className="pr-10  font-extralight hover:font-normal" href="" onMouseEnter={handleAmrClose}>
+                      Solution
+                    </a>
+                    <a
+                      className={clsx({
+                        "pr-10  font-extralight hover:font-normal": true,
+                        "font-normal": showAMRList,
+                      })}
+                      href=""
+                      onMouseEnter={() => {
+                        setAMRIndex(-1);
+                        setShowAMRList(true);
+                      }}
+                    >
+                      Modelle
+                    </a>
+                  </div>
+                  <AnimatePresence>
+                    {showAMRList && (
+                      <div
+                        className={clsx({
+                          "flex flex-col flex-wrap overflow-hidden pb-4 pl-4 transition-all duration-700 ease-in-out lg:flex-row lg:pl-0": true,
+                        })}
+                      >
+                        {props.amrs.map((amr, index) => (
+                          <motion.a layout className={clsx("inline-block pr-10 text-lg font-thin hover:font-light lg:text-2xl", {})} initial={{ opacity: 0, height: 0 }} exit={{ opacity: 0, height: 0 }} animate={{ opacity: 1, height: "auto" }} key={amr.name} onMouseEnter={() => setAMRIndex(index)}>
+                            {amr.name}
+                          </motion.a>
+                        ))}
+                      </div>
                     )}
-                    <div></div>
+                  </AnimatePresence>
+                  <div className="flex flex-col text-3xl lg:flex-row lg:text-6xl">
+                    <a className="pr-10 font-extralight hover:font-normal" href="" onMouseEnter={handleAmrClose}>
+                      Team
+                    </a>
+                    <a className="pr-10  font-extralight hover:font-normal" href="" onMouseEnter={handleAmrClose}>
+                      Blog
+                    </a>
+                  </div>
                 </div>
-                <a
-                    className="grid grid-cols-[1fr_auto] items-center justify-items-start gap-3 rounded bg-[#96B0B3] px-3 py-2 shadow hover:bg-[#E80381] hover:text-white"
-                    href={`mailto:${"props.mail_address"}?subject=${encodeURIComponent(
-                        "props.mail_subject"
-                    )}&body=${encodeURIComponent("props.mail_body")}`}
+                <motion.div
+                  initial={{ opacity: 0 }}
+                  animate={{ opacity: showAMRList ? 1 : 0 }}
+                  exit={{ opacity: 0 }}
+                  className={clsx({
+                    " rounded-lg bg-black p-4 max-lg:hidden ": true,
+                  })}
                 >
-                    <LinkIcon className="inline w-4" />
-                    contact
-                </a>
-            </div>
-        </>
-    );
+                  <img className="pr-10 text-3xl font-thin hover:font-light" src={amrUrl} alt={amrAlt} />
+                </motion.div>
+              </div>
+              <div className="">
+                <nav className=" flex flex-col flex-wrap justify-between text-sm text-[#141D1E] md:flex-row ">
+                  <div className="space-x-6 text-right md:text-left">
+                    <a className="hover:font-semibold" href="">
+                      Impressum
+                    </a>
+                    <a className="hover:font-semibold" href="">
+                      Datenschutz
+                    </a>
+                    <a className="hover:font-semibold" href="">
+                      FAQ
+                    </a>
+                  </div>
+                  <div className={"order-first pb-4 text-right text-sm md:order-last "}>
+                    <a className={`no-underline hover:underline ${currentLang === "de" ? "font-extrabold" : ""}`} href="/de">
+                      DE{" "}
+                    </a>
+                    |
+                    <a className={`no-underline hover:underline ${currentLang === "en" || currentLang === "" ? "font-extrabold" : ""}`} href="/en">
+                      {" "}
+                      EN
+                    </a>{" "}
+                  </div>
+                </nav>
+              </div>
+            </motion.div>
+          )}
+        </AnimatePresence>
+      </motion.div>
+    </LayoutGroup>
+  );
 }
 
 export { Header };
