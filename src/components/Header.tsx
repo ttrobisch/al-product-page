@@ -13,8 +13,7 @@ type Props = {
 };
 
 function Header(props: Props) {
-  // const currentLang = useRouter().locale;
-  const currentLang = "de";
+  const currentLang = useRouter().locale;
 
   const [isOpen, setIsOpen] = useState(false);
 
