@@ -16,3 +16,21 @@ export function ArrowUpIcon(props: JSX.IntrinsicElements["svg"]) {
     </svg>
   );
 }
+
+export function CrossIcon(props: JSX.IntrinsicElements["svg"]) {
+  return (
+    <svg {...props} className={clsx("inline", props.className)} width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <path d="M4.375 4.375L10 10M10 10L4.375 15.625M10 10L15.625 15.625M10 10L15.625 4.375" stroke="#141D1E" />
+    </svg>
+  );
+}
+
+export function BurgerMenu(props: JSX.IntrinsicElements["svg"]) {
+  return (
+    <svg {...props} className={clsx("inline", props.className)} width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <path d="M1 1H19" stroke="black" stroke-linecap="round" />
+      <path d="M1 7H10" stroke="black" stroke-linecap="round" />
+      <path d="M1 13H15" stroke="black" stroke-linecap="round" />
+    </svg>
+  );
+}
