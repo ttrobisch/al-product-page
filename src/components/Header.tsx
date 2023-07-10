@@ -54,16 +54,24 @@ function Header(props: Props) {
         <motion.div
           layout
           className={clsx({
-            " absolute grid w-full gap-8 overflow-hidden rounded-b-3xl bg-[#D2D7D9] px-8 py-8 pb-5 transition-all duration-700 ease-in-out lg:gap-20 lg:px-24 lg:py-20": true,
+            " absolute grid w-full gap-8 overflow-hidden rounded-b-3xl bg-[#D2D7D9] px-8 py-8 pb-5 transition-all duration-700 ease-in-out lg:gap-20 lg:px-24 lg:py-11": true,
             "text-color h-auto bg-transparent": !isOpen,
             "flex-grow": isOpen,
           })}
           onMouseLeave={handleAmrClose}
         >
           <div className="flex flex-wrap justify-between text-[#141D1E]">
-            <a className="text-left text-sm hover:font-semibold" href="">
-              Autonomous Logistics
-            </a>
+            <div className="text-left text-sm hover:font-semibold ">
+                {isOpen ? (
+                    <a className="text-black" href="">
+                      Autonomous Logistics
+                    </a>
+                ) : (
+                    <a className="text-white" href="">
+                      Autonomous Logistics
+                    </a>
+                )}
+            </div>
             <button className="text-right text-sm" onClick={handleClick}>
               {isOpen ? (
                 <>
@@ -72,8 +80,8 @@ function Header(props: Props) {
                 </>
               ) : (
                 <>
-                  <BurgerMenu className="mr-2 h-[14px] " />
-                  <span className="max-lg:hidden">Menu</span>
+                  <BurgerMenu className="mr-2 h-[14px] fill-white" />
+                  <span className="max-lg:hidden text-white">Menu</span>
                 </>
               )}
             </button>

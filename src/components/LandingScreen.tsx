@@ -43,16 +43,6 @@ function LandingScreen(props: Props) {
         <h1 className="text-4xl font-extrabold text-white md:text-6xl lg:text-8xl">
           Autonomous <br /> Logistics
         </h1>
-        <div className={"text-l absolute right-6 top-5 text-white"}>
-          <a className={`no-underline hover:underline ${currentLang === "de" ? "font-extrabold" : ""}`} href="/de">
-            DE{" "}
-          </a>
-          |
-          <a className={`no-underline hover:underline ${currentLang === "en" || currentLang === "" ? "font-extrabold" : ""}`} href="/en">
-            {" "}
-            EN
-          </a>{" "}
-        </div>
         <div className="justify-self-center  md:row-span-3 lg:col-start-2 lg:justify-self-start">
           <Image src={props.amr_url} alt="Ein Bild vom Husky" width={700} height={400} quality={75} placeholder="empty" priority />
         </div>
