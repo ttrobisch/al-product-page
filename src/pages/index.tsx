@@ -102,6 +102,7 @@ const props = {
   fallbackImgAlt: "Models",
   pages: ["Home", "Solution", "Models", "Unser Team", "Blog"],
   color: "#141D1E",
+  logoHidden: true,
 };
 
 export default function Index({ data, amrs, videos, footer }: Props) {

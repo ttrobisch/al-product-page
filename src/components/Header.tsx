@@ -10,11 +10,19 @@ type Props = {
   fallbackImgAlt: string;
   pages: string[];
   color: string;
+  logoHidden: boolean;
+
 };
 
 function Header(props: Props) {
-  // const currentLang = useRouter().locale;
-  const currentLang = "de";
+  const currentLang : string = useRouter().locale;
+
+  //const path = window.location.pathname.split("/")[0];
+  const [path, setPath] = React.useState("");
+   React.useEffect(() => {
+    setPath(window.location.pathname.split("/")[0]);
+  }, []);
+
 
   const [isOpen, setIsOpen] = useState(false);
 
@@ -41,13 +49,13 @@ function Header(props: Props) {
             <motion.div
               layout
               transition={{ duration: 1, delay: 0.1 }}
-              initial={{ opacity: 0, height: "0px", width: "100vw" }}
-              animate={{ opacity: 1, height: "100vh", width: "100vw" }}
+              initial={{ opacity: 0, height: "0px", width: "99vw" }}
+              animate={{ opacity: 1, height: "100vh", width: "99vw" }}
               className={clsx({
                 "duration-900 absolute px-8 py-8 pb-5 transition-opacity ": true,
                 "hidden bg-white": !isOpen,
                 " flex-grow bg-[#000000aa]": isOpen,
-              })}
+              })} onClick={handleClick}
             ></motion.div>
           )}
         </AnimatePresence>
@@ -67,22 +75,22 @@ function Header(props: Props) {
                       Autonomous Logistics
                     </a>
                 ) : (
-                    <a className="text-white" href="">
+                    <a className={`text-white ${props.logoHidden == true ? "hidden" : "visible"}`} href="">
                       Autonomous Logistics
                     </a>
                 )}
             </div>
-            <button className="text-right text-sm" onClick={handleClick}>
+            <button className="text-right text-sm hover:font-semibold" onClick={handleClick}>
               {isOpen ? (
                 <>
                   <CrossIcon className="mr-2 " />
                   <span className="max-lg:hidden">close</span>
                 </>
               ) : (
-                <>
-                  <BurgerMenu className="mr-2 h-[14px] fill-white" />
-                  <span className="max-lg:hidden text-white">Menu</span>
-                </>
+                <div className="text-white">
+                  <BurgerMenu className="mr-2 h-[14px]" />
+                  <span className="max-lg:hidden">Menu</span>
+                </div>
               )}
             </button>
           </div>
@@ -120,7 +128,7 @@ function Header(props: Props) {
                           })}
                         >
                           {props.amrs.map((amr, index) => (
-                            <motion.a layout className={clsx("inline-block pr-10 text-lg font-thin hover:font-light lg:text-2xl", {})} initial={{ opacity: 0, height: 0 }} exit={{ opacity: 0, height: 0 }} animate={{ opacity: 1, height: "auto" }} key={amr.name} onMouseEnter={() => setAMRIndex(index)}>
+                            <motion.a layout className={clsx("inline-block pr-10 text-lg font-thin hover:font-light lg:text-2xl cursor-pointer", {})} initial={{ opacity: 0, height: 0 }} exit={{ opacity: 0, height: 0 }} animate={{ opacity: 1, height: "auto" }} key={amr.name} onMouseEnter={() => setAMRIndex(index)}>
                               {amr.name}
                             </motion.a>
                           ))}
@@ -141,7 +149,7 @@ function Header(props: Props) {
                     animate={{ opacity: showAMRList ? 1 : 0 }}
                     exit={{ opacity: 0 }}
                     className={clsx({
-                      " rounded-lg bg-black p-4 max-lg:hidden ": true,
+                      " rounded-lg p-4 max-lg:hidden ": true,
                     })}
                   >
                     <img className="pr-10 text-3xl font-thin hover:font-light" src={amrUrl} alt={amrAlt} />
